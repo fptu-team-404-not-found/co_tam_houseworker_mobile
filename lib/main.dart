@@ -1,4 +1,5 @@
-import 'package:co_tam_houseworker_mobile/app/pages/login/login_view.dart';
+import 'package:co_tam_houseworker_mobile/app/utils/routes.dart';
+import 'package:co_tam_houseworker_mobile/app/utils/router.dart' as router;
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: LoginPage()
+      initialRoute: Routes.loginPage,
+      onGenerateRoute: router.Router.generateRoute,
     );
   }
 }
