@@ -31,20 +31,16 @@ class AppText {
   static const headingLarge = TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 26,
-    height: 30,
     fontStyle: FontStyle.normal,
-    color: AppColor.secondaryColor100
   );
   static const headingSmall = TextStyle(
     fontWeight: FontWeight.w600,
     fontSize: 18,
-    height: 21,
-    fontStyle: FontStyle.normal
+    fontStyle: FontStyle.normal,
   );
   static const text = TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 12,
-    height: 14,
-    fontStyle: FontStyle.normal
+    fontStyle: FontStyle.normal,
   );
 }

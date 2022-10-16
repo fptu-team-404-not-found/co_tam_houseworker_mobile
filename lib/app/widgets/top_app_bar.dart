@@ -1,5 +1,4 @@
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TopAppBar extends StatelessWidget {
@@ -14,7 +13,7 @@ class TopAppBar extends StatelessWidget {
       appBar: AppBar(
         leading: leadingICon,
         title: Center(
-            child: Text(title.toUpperCase(),
+            child: Text(title,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.w400,
