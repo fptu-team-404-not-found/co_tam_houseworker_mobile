@@ -12,15 +12,14 @@ class TopAppBar extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: leadingICon,
-        title: Center(
-            child: Text(title,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 26,
-                  fontStyle: FontStyle.normal,
-                  color: AppColor.secondaryColor100
-                ))),
+        centerTitle: true,
+        title: Text(title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 26,
+                fontStyle: FontStyle.normal,
+                color: AppColor.secondaryColor100)),
         backgroundColor: AppColor.primaryColor100,
       )
     );
