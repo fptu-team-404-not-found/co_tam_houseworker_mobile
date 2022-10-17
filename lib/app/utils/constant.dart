@@ -29,18 +29,18 @@ class AppString {
 
 class AppText {
   static const headingLarge = TextStyle(
-    fontWeight: FontWeight.w400,
-    fontSize: 26,
-    fontStyle: FontStyle.normal,
-  );
+      fontWeight: FontWeight.w400,
+      fontSize: 26,
+      fontStyle: FontStyle.normal,
+      color: AppColor.primaryColor100);
   static const headingSmall = TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: 18,
-    fontStyle: FontStyle.normal,
-  );
+      fontWeight: FontWeight.w400,
+      fontSize: 18,
+      fontStyle: FontStyle.normal,
+      color: AppColor.primaryColor100);
   static const text = TextStyle(
-    fontWeight: FontWeight.w400,
-    fontSize: 12,
-    fontStyle: FontStyle.normal,
-  );
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      fontStyle: FontStyle.normal,
+      color: AppColor.primaryColor100);
 }

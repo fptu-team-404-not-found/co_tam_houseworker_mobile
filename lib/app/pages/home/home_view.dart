@@ -1,4 +1,5 @@
 import 'package:co_tam_houseworker_mobile/app/pages/home/home_controller.dart';
+import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/avatar.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/switch_button.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/top_app_bar.dart';
@@ -26,9 +27,25 @@ class HomePageView extends ViewState<HomePage, HomeController> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
-      children: const [
-        SwitchButton(),
-        Avatar(radius: 80)
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            Padding(
+              padding: EdgeInsets.only(left: 16.0, top: 8),
+              child: Text(
+                'Chế độ nhận đơn',
+                style: AppText.headingSmall,
+              )
+            ),
+            Padding(
+                padding: EdgeInsets.only(right: 16.0, top: 8),
+                child: SwitchButton()
+            )
+          ],
+        ),
+        const Divider(),
+        const Avatar(radius: 80)
       ],
     ),
   );
