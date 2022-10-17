@@ -2,6 +2,9 @@ import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../utils/routes.dart';
+
+
 class LoginButton extends StatelessWidget {
   final String title;
   final FaIcon icon;
@@ -13,7 +16,9 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     const VoidCallback? onPressed = null;
     return ElevatedButton.icon(
-      onPressed: onPressed,
+      onPressed: () {
+        Navigator.pushNamed(context, Routes.homePage);
+      },
       style: ButtonStyle(
         minimumSize: MaterialStateProperty.all(const Size(300, 50)),
         backgroundColor: MaterialStateProperty.all(AppColor.primaryColor100),
