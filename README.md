@@ -1,4 +1,4 @@
-# project
+# co-tam-houseworker-mobile
 
 Cô Tấm - A SWD392 Project.
 

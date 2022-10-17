@@ -43,4 +43,9 @@ class AppText {
       fontSize: 12,
       fontStyle: FontStyle.normal,
       color: AppColor.primaryColor100);
+  static const textBlack = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      fontStyle: FontStyle.normal,
+      color: AppColor.subColor100);
 }

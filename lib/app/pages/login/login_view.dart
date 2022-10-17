@@ -27,7 +27,7 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
       mainAxisSize: MainAxisSize.min,
       children: const [
         Center(child: Image(image: AssetImage('assets/img/login_img.png'))),
-        SizedBox(height: 10),
+        SizedBox(height: 50),
         LoginButton(title: 'Đăng nhập với Google', icon: FaIcon(FontAwesomeIcons.google)),
         SizedBox(height: 10),
         LoginButton(title: 'Đăng nhập với Facebook', icon: FaIcon(FontAwesomeIcons.facebook))

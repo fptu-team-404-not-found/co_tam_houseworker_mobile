@@ -6,6 +6,7 @@ import 'package:co_tam_houseworker_mobile/app/widgets/switch_button.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/top_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends View {
   const HomePage({super.key});
@@ -18,7 +19,6 @@ class HomePageView extends ViewState<HomePage, HomeController> {
   HomePageView() : super(HomeController());
 
   @override
-  // TODO: implement view
   Widget get view => Scaffold(
     appBar: const PreferredSize(
         preferredSize: Size(VisualDensity.maximumDensity, 56),
@@ -45,17 +45,27 @@ class HomePageView extends ViewState<HomePage, HomeController> {
             )
           ],
         ),
-        const Divider(),
+        const Divider(thickness: 3),
+        const SizedBox(height: 48),
         const Avatar(radius: 80),
-        SizedBox(height: 24),
+        const SizedBox(height: 48),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
-            SquareBoxButton(),
-            SquareBoxButton()
+            SquareBoxButton(text: 'Đang thực hiện', iconData: FontAwesomeIcons.list, subNumber: 1, isLight: true),
+            SquareBoxButton(text: 'Đã hoàn thành', iconData: FontAwesomeIcons.listCheck, subNumber: 1, isLight: false)
           ],
         ),
-
+        const SizedBox(height: 48),
+        const Divider(color: AppColor.primaryColor100, thickness: 3),
+        Column(
+          mainAxisSize: MainAxisSize.max,
+          children: const [
+            Text('ĐƠN HIỆN TẠI', style: AppText.headingLarge),
+            SizedBox(height: 12),
+            Text('Hiện tại không có đơn nào', style: AppText.textBlack)
+          ],
+        )
       ],
     ),
   );
