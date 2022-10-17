@@ -2,19 +2,19 @@ import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class OrderDetailsInformation extends StatefulWidget {
+class IconTextInformation extends StatefulWidget {
   final String informationDetails;
   final IconData icon;
 
-  const OrderDetailsInformation(
+  const IconTextInformation(
       {required this.informationDetails, required this.icon, Key? key})
       : super(key: key);
 
   @override
-  State<OrderDetailsInformation> createState() => _OrderDetailsInformationState();
+  State<IconTextInformation> createState() => _IconTextInformationState();
 }
 
-class _OrderDetailsInformationState extends State<OrderDetailsInformation> {
+class _IconTextInformationState extends State<IconTextInformation> {
   @override
   Widget build(BuildContext context) {
     return Row(
