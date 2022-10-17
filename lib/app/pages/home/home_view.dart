@@ -1,6 +1,7 @@
 import 'package:co_tam_houseworker_mobile/app/pages/home/home_controller.dart';
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/avatar.dart';
+import 'package:co_tam_houseworker_mobile/app/widgets/square_box_button.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/switch_button.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/top_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class HomePageView extends ViewState<HomePage, HomeController> {
         child: TopAppBar("Xin chào", null)
     ),
     body: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -45,7 +46,16 @@ class HomePageView extends ViewState<HomePage, HomeController> {
           ],
         ),
         const Divider(),
-        const Avatar(radius: 80)
+        const Avatar(radius: 80),
+        SizedBox(height: 24),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            SquareBoxButton(),
+            SquareBoxButton()
+          ],
+        ),
+
       ],
     ),
   );
