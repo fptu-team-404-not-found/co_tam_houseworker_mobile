@@ -1,4 +1,5 @@
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
+import 'package:co_tam_houseworker_mobile/app/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -32,7 +33,9 @@ class _SquareBoxButtonState extends State<SquareBoxButton> {
             }
             return AppColor.primaryColor100;
           })),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, Routes.orderPage);
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

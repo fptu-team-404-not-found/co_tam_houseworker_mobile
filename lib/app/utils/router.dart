@@ -1,6 +1,7 @@
 import 'package:co_tam_houseworker_mobile/app/pages/home/home_view.dart';
 import 'package:flutter/material.dart';
 import '../pages/login/login_view.dart';
+import '../pages/order/order_view.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -9,6 +10,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case 'HomePage':
         return MaterialPageRoute(builder: (_) => const HomePage());
+      case 'OrderPage':
+        return MaterialPageRoute(builder: (_) => const OrderPage());
       default:
         return MaterialPageRoute(builder: (_) {
           return Scaffold(

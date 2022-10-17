@@ -1,12 +1,13 @@
 import 'package:co_tam_houseworker_mobile/app/pages/home/home_controller.dart';
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
-import 'package:co_tam_houseworker_mobile/app/widgets/avatar.dart';
-import 'package:co_tam_houseworker_mobile/app/widgets/square_box_button.dart';
-import 'package:co_tam_houseworker_mobile/app/widgets/switch_button.dart';
-import 'package:co_tam_houseworker_mobile/app/widgets/top_app_bar.dart';
+import 'package:co_tam_houseworker_mobile/app/widgets/button/square_box_button.dart';
+import 'package:co_tam_houseworker_mobile/app/widgets/button/switch_button.dart';
+import 'package:co_tam_houseworker_mobile/app/widgets/app_bar/top_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../widgets/information/avatar.dart';
 
 class HomePage extends View {
   const HomePage({super.key});

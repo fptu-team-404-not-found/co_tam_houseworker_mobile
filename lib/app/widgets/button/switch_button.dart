@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/constant.dart';
+import '../../utils/constant.dart';
 
 class SwitchButton extends StatefulWidget {
   const SwitchButton({Key? key}) : super(key: key);
