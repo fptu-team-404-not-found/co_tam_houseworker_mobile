@@ -1,4 +1,5 @@
 import 'package:co_tam_houseworker_mobile/app/pages/home/home_controller.dart';
+import 'package:co_tam_houseworker_mobile/app/widgets/avatar.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/switch_button.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/top_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +17,20 @@ class HomePageView extends ViewState<HomePage, HomeController> {
 
   @override
   // TODO: implement view
-  Widget get view => const Scaffold(
-    appBar: PreferredSize(
+  Widget get view => Scaffold(
+    appBar: const PreferredSize(
         preferredSize: Size(VisualDensity.maximumDensity, 56),
         child: TopAppBar("Xin chào", null)
     ),
-    body: SwitchButton(),
+    body: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: const [
+        SwitchButton(),
+        Avatar(radius: 80)
+      ],
+    ),
   );
 
 }
