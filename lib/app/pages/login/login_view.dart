@@ -24,12 +24,12 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
     ),
     body: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: const [
-        Center(child: Image(image: AssetImage('assets/img/login_img.png'))),
-        SizedBox(height: 50),
+        Center(child: Image(image: AssetImage('assets/img/login_img.png'), width: 500)),
+        SizedBox(height: 20),
         LoginButton(title: 'Đăng nhập với Google', icon: FaIcon(FontAwesomeIcons.google)),
-        SizedBox(height: 10),
+        SizedBox(height: 20),
         LoginButton(title: 'Đăng nhập với Facebook', icon: FaIcon(FontAwesomeIcons.facebook))
       ],
     ),

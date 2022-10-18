@@ -4,11 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class IconTextInformation extends StatefulWidget {
   final String informationDetails;
-  final IconData icon;
+  final IconData? icon;
 
-  const IconTextInformation(
-      {required this.informationDetails, required this.icon, Key? key})
-      : super(key: key);
+  const IconTextInformation(this.icon, @required this.informationDetails, {Key? key}) : super(key: key);
 
   @override
   State<IconTextInformation> createState() => _IconTextInformationState();
@@ -19,8 +17,9 @@ class _IconTextInformationState extends State<IconTextInformation> {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Padding(padding: const EdgeInsets.all(8), child: FaIcon(widget.icon, color: AppColor.primaryColor100)),
+        Padding(padding: const EdgeInsets.all(8), child: FaIcon(widget.icon, color: AppColor.primaryColor100, size: 20)),
         Text(widget.informationDetails, style: const TextStyle(
           fontWeight: FontWeight.w500,
           fontSize: 16,

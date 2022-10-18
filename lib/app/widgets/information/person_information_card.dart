@@ -14,31 +14,44 @@ class _PersonInformationCardState extends State<PersonInformationCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
-      width: 300,
+      height: 150,
+      width: 350,
+      padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+        borderRadius: BorderRadius.all(Radius.circular(12)),
         border: Border.all(
-          color: Colors.black,
+          color: AppColor.primaryColor50,
           width: 1,
         ),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Avatar(radius: 50),
+          const Avatar(radius: 48),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              Text('Họ và tên', style: AppText.headingLarge),
-              Text('SĐT', style: AppText.headingSmall),
-              Text('Lưu ý', style: AppText.headingSmall)
+              Padding(padding: EdgeInsets.all(8), child: Text('Họ và tên', style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: AppColor.primaryColor100
+              ))),
+              Padding(padding: EdgeInsets.all(8), child: Text('SĐT', style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: AppColor.subColor100
+              ))),
+              Padding(padding: EdgeInsets.all(8), child: Text('Lưu ý', style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: AppColor.subColor100
+              ))),
             ],
           ),
-          FaIcon(FontAwesomeIcons.phone)
+          const FaIcon(FontAwesomeIcons.phone, color: AppColor.primaryColor100)
         ],
       )
     );

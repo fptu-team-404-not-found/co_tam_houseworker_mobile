@@ -4,6 +4,8 @@ import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../widgets/app_bar/top_app_bar.dart';
+import '../../widgets/information/order_information/order_details_information_card.dart';
+import '../../widgets/information/order_information/order_details_summary.dart';
 import '../../widgets/information/person_information_card.dart';
 import '../../widgets/state/order_status.dart';
 import 'order_controller.dart';
@@ -25,11 +27,17 @@ class OrderPageView extends ViewState<OrderPage, OrderController> {
         child: TopAppBar('Đơn hàng', null)
     ),
     body: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: const [
-        IconTextInformation(informationDetails: 'Phòng 2.03, S.201, Vinhomes Grand Park', icon: FontAwesomeIcons.locationDot),
+        IconTextInformation(FontAwesomeIcons.locationDot, 'Phòng 2.03, S.201, Vinhomes Grand Park'),
         SizedBox(height: 12),
         OrderStatus(),
-        PersonInformationCard()
+        SizedBox(height: 12),
+        PersonInformationCard(),
+        SizedBox(height: 12),
+        OrderDetailsInformationCard(),
+        SizedBox(height: 12),
+        OrderDetailsSummary()
       ],
     ),
   );

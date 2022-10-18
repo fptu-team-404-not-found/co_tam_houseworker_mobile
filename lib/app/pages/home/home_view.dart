@@ -25,49 +25,51 @@ class HomePageView extends ViewState<HomePage, HomeController> {
         preferredSize: Size(VisualDensity.maximumDensity, 56),
         child: TopAppBar("Xin chào", null)
     ),
-    body: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Padding(
-              padding: EdgeInsets.only(left: 16.0, top: 8),
-              child: Text(
-                'Chế độ nhận đơn',
-                style: AppText.headingSmall,
+    body: SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Padding(
+                  padding: EdgeInsets.only(left: 16.0, top: 8),
+                  child: Text(
+                    'Chế độ nhận đơn',
+                    style: AppText.headingSmall,
+                  )
+              ),
+              Padding(
+                  padding: EdgeInsets.only(right: 16.0, top: 8),
+                  child: SwitchButton()
               )
-            ),
-            Padding(
-                padding: EdgeInsets.only(right: 16.0, top: 8),
-                child: SwitchButton()
-            )
-          ],
-        ),
-        const Divider(thickness: 3),
-        const SizedBox(height: 48),
-        const Avatar(radius: 80),
-        const SizedBox(height: 48),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            SquareBoxButton(text: 'Đang thực hiện', iconData: FontAwesomeIcons.list, subNumber: 1, isLight: true),
-            SquareBoxButton(text: 'Đã hoàn thành', iconData: FontAwesomeIcons.listCheck, subNumber: 1, isLight: false)
-          ],
-        ),
-        const SizedBox(height: 48),
-        const Divider(color: AppColor.primaryColor100, thickness: 3),
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          children: const [
-            Text('ĐƠN HIỆN TẠI', style: AppText.headingLarge),
-            SizedBox(height: 12),
-            Text('Hiện tại không có đơn nào', style: AppText.textBlack)
-          ],
-        )
-      ],
+            ],
+          ),
+          const Divider(thickness: 3),
+          const SizedBox(height: 32),
+          const Avatar(radius: 120),
+          const SizedBox(height: 32),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              SquareBoxButton(text: 'Đang thực hiện', iconData: FontAwesomeIcons.list, subNumber: 1, isLight: true),
+              SquareBoxButton(text: 'Đã hoàn thành', iconData: FontAwesomeIcons.listCheck, subNumber: 1, isLight: false)
+            ],
+          ),
+          const SizedBox(height: 32),
+          const Divider(color: AppColor.primaryColor100, thickness: 3),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            children: const [
+              Text('ĐƠN HIỆN TẠI', style: AppText.headingLarge),
+              SizedBox(height: 12),
+              Text('Hiện tại không có đơn nào', style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16
+              ))
+            ],
+          )
+        ],
+      )
     ),
   );
 
