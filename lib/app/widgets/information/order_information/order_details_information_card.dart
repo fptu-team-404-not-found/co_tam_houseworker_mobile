@@ -1,5 +1,4 @@
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
-import 'package:co_tam_houseworker_mobile/app/widgets/information/avatar.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/information/icon_text_information.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,25 +14,25 @@ class _OrderDetailsInformationCardState extends State<OrderDetailsInformationCar
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
+      alignment: Alignment.centerLeft,
       width: 350,
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
         border: Border.all(
           color: AppColor.primaryColor50,
           width: 1,
         ),
       ),
       child: Wrap(
-        crossAxisAlignment: WrapCrossAlignment.center,
+        direction: Axis.vertical,
         children: const [
-          IconTextInformation(FontAwesomeIcons.clock, '1 giờ'),
-          IconTextInformation(FontAwesomeIcons.handHoldingHeart, 'Dọn dẹp nhà cửa'),
-          IconTextInformation(null, 'Ủi đồ'),
-          IconTextInformation(null, 'Vệ sinh khu vật nuôi'),
-          IconTextInformation(FontAwesomeIcons.calendar, 'Ghi chú'),
+          IconTextInformation(FontAwesomeIcons.clock, informationDetails: '1h'),
+          IconTextInformation(FontAwesomeIcons.handHoldingHeart, informationDetails: 'Dọn dẹp nhà cửa'),
+          IconTextInformation(null, informationDetails: 'Ủi đồ'),
+          IconTextInformation(null, informationDetails: 'Vệ sinh khu vật nuôi'),
+          IconTextInformation(FontAwesomeIcons.calendar, informationDetails: 'Ghi chú'),
         ],
       )
     );

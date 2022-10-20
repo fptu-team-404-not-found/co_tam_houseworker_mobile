@@ -16,10 +16,10 @@ class _PersonInformationCardState extends State<PersonInformationCard> {
     return Container(
       height: 150,
       width: 350,
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
         border: Border.all(
           color: AppColor.primaryColor50,
           width: 1,

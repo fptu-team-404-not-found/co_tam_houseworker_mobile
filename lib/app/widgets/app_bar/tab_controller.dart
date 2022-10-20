@@ -29,7 +29,6 @@ class _TabControllerWidgetState extends State<TabControllerWidget>
   }
 
   List<Padding> get _tabs {
-    var list = [for (var i = 0; i < 3; i += 1) i];
     List<Padding> tabs = const [
       Padding(padding: EdgeInsets.all(8), child: Text('ĐANG NHẬN', style: TextStyle(
         fontSize: 16
@@ -74,12 +73,12 @@ class _TabControllerWidgetState extends State<TabControllerWidget>
             ]
           )
         ),
-        Container(
+        SizedBox(
           width: double.infinity,
           height: double.maxFinite,
           child: TabBarView(
             controller: tabController,
-            children: [
+            children: const [
               TabBody(bodyView: OrderReceivingPage()),
               TabBody(bodyView: OrderRatingPage()),
               TabBody(bodyView: OrderHistoryPage())

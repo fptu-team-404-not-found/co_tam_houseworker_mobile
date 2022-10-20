@@ -6,7 +6,7 @@ class IconTextInformation extends StatefulWidget {
   final String informationDetails;
   final IconData? icon;
 
-  const IconTextInformation(this.icon, @required this.informationDetails, {Key? key}) : super(key: key);
+  const IconTextInformation(this.icon, {Key? key, required this.informationDetails}) : super(key: key);
 
   @override
   State<IconTextInformation> createState() => _IconTextInformationState();

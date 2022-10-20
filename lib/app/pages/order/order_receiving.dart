@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../widgets/button/action_button.dart';
 import '../../widgets/information/order_information/order_details_information_card.dart';
 import '../../widgets/information/order_information/order_details_summary.dart';
 import '../../widgets/information/person_information_card.dart';
@@ -16,15 +17,16 @@ class OrderReceivingPage extends View {
   State<StatefulWidget> createState() => OrderReceivedPageView();
 }
 
-class OrderReceivedPageView extends ViewState<OrderReceivingPage, OrderController> {
+class OrderReceivedPageView
+    extends ViewState<OrderReceivingPage, OrderController> {
   OrderReceivedPageView() : super(OrderController());
 
   @override
   Widget get view => SingleChildScrollView(
-    child: Column(
-      children: [
+          child: Column(mainAxisSize: MainAxisSize.min, children: const [
         SizedBox(height: 12),
-        IconTextInformation(FontAwesomeIcons.locationDot, 'Phòng 2.03, S.201, Vinhomes Grand Park'),
+        IconTextInformation(FontAwesomeIcons.locationDot,
+            informationDetails: 'Phòng 2.03, S.201, Vinhomes Grand Park'),
         SizedBox(height: 12),
         OrderStatus(),
         SizedBox(height: 12),
@@ -32,8 +34,7 @@ class OrderReceivedPageView extends ViewState<OrderReceivingPage, OrderControlle
         SizedBox(height: 12),
         OrderDetailsInformationCard(),
         SizedBox(height: 12),
-        OrderDetailsSummary()
-      ],
-    )
-  );
+        OrderDetailsSummary(),
+        ActionButton(numberOfButton: 2)
+      ]));
 }

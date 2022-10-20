@@ -18,6 +18,6 @@ class OrderPageView extends ViewState<OrderPage, OrderController> {
   @override
   Widget get view => const Scaffold(
     appBar: PreferredSize(preferredSize: Size.fromHeight(56), child: TopAppBar('ĐƠN HÀNG', null)),
-    body: TabControllerWidget(),
+    body: TabControllerWidget()
   );
 }
