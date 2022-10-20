@@ -1,3 +1,5 @@
+import 'package:co_tam_houseworker_mobile/app/pages/order/order_history.dart';
+import 'package:co_tam_houseworker_mobile/app/pages/order/order_rating.dart';
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/app_bar/tab_body.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +52,7 @@ class _TabControllerWidgetState extends State<TabControllerWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Wrap(
       children: <Widget>[
         Container(
           width: double.infinity,
@@ -61,18 +63,29 @@ class _TabControllerWidgetState extends State<TabControllerWidget>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TabBar(
-                  isScrollable: true,
-                  tabs: _tabs,
-                  controller: tabController,
-                  unselectedLabelColor: AppColor.subColor100,
-                  labelColor: AppColor.primaryColor100,
-                  indicatorWeight: 2,
-                  indicatorColor: AppColor.primaryColor30
+                isScrollable: true,
+                tabs: _tabs,
+                controller: tabController,
+                unselectedLabelColor: AppColor.subColor100,
+                labelColor: AppColor.primaryColor100,
+                indicatorWeight: 2,
+                indicatorColor: AppColor.primaryColor30
               )
             ]
           )
         ),
-        TabBody(bodyView: OrderReceivingPage())
+        Container(
+          width: double.infinity,
+          height: double.maxFinite,
+          child: TabBarView(
+            controller: tabController,
+            children: [
+              TabBody(bodyView: OrderReceivingPage()),
+              TabBody(bodyView: OrderRatingPage()),
+              TabBody(bodyView: OrderHistoryPage())
+            ],
+          ),
+        )
       ],
     );
   }

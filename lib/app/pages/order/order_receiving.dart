@@ -20,20 +20,20 @@ class OrderReceivedPageView extends ViewState<OrderReceivingPage, OrderControlle
   OrderReceivedPageView() : super(OrderController());
 
   @override
-  Widget get view => Column(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: const [
-      SizedBox(height: 12),
-      IconTextInformation(FontAwesomeIcons.locationDot, 'Phòng 2.03, S.201, Vinhomes Grand Park'),
-      SizedBox(height: 12),
-      OrderStatus(),
-      SizedBox(height: 12),
-      PersonInformationCard(),
-      SizedBox(height: 12),
-      OrderDetailsInformationCard(),
-      SizedBox(height: 12),
-      OrderDetailsSummary()
-    ]
+  Widget get view => SingleChildScrollView(
+    child: Column(
+      children: [
+        SizedBox(height: 12),
+        IconTextInformation(FontAwesomeIcons.locationDot, 'Phòng 2.03, S.201, Vinhomes Grand Park'),
+        SizedBox(height: 12),
+        OrderStatus(),
+        SizedBox(height: 12),
+        PersonInformationCard(),
+        SizedBox(height: 12),
+        OrderDetailsInformationCard(),
+        SizedBox(height: 12),
+        OrderDetailsSummary()
+      ],
+    )
   );
 }
