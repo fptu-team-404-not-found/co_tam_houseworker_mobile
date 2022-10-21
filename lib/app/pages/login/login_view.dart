@@ -20,7 +20,7 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
   Widget get view => Scaffold(
     appBar: const PreferredSize(
         preferredSize: Size(VisualDensity.maximumDensity, 56),
-        child: TopAppBar('Cô Tấm', null)
+        child: TopAppBar('Cô Tấm', null, null, null)
     ),
     body: Column(
       crossAxisAlignment: CrossAxisAlignment.center,

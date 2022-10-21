@@ -52,7 +52,7 @@ class _TabControllerWidgetState extends State<TabControllerWidget>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size.fromHeight(56), child: Container(
+      appBar: PreferredSize(preferredSize: const Size.fromHeight(56), child: Container(
         width: double.infinity,
         height: 48,
         color: AppColor.secondaryColor100,

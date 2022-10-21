@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../utils/routes.dart';
 import '../../widgets/information/avatar.dart';
 
 class HomePage extends View {
@@ -21,9 +22,9 @@ class HomePageView extends ViewState<HomePage, HomeController> {
 
   @override
   Widget get view => Scaffold(
-    appBar: const PreferredSize(
-        preferredSize: Size(VisualDensity.maximumDensity, 56),
-        child: TopAppBar("Xin chào", null)
+    appBar: PreferredSize(
+        preferredSize: const Size(VisualDensity.maximumDensity, 56),
+        child: TopAppBar("Xin chào", null, FontAwesomeIcons.bell, () => {Navigator.pushNamed(context, Routes.notificationPage)})
     ),
     body: SingleChildScrollView(
       child: Column(
