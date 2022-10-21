@@ -12,6 +12,12 @@ class ActionButton extends StatefulWidget {
 class _ActionButtonState extends State<ActionButton> {
   @override
   Widget build(BuildContext context) {
+    if (widget.numberOfButton <= 0) {
+      return const Visibility(
+        visible: false,
+        child: Text("Invisible")
+      );
+    }
     if (widget.numberOfButton <= 1) {
       return Material(
         color: AppColor.primaryColor100,

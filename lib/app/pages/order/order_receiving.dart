@@ -38,7 +38,7 @@ class OrderReceivedPageView
             OrderDetailsInformationCard(),
             SizedBox(height: 12),
             OrderDetailsSummary(),
-            SizedBox(height: 56)
+            SizedBox(height: 68)
           ]
       ),
     ),
