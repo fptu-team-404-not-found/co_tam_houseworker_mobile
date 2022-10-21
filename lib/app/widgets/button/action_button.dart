@@ -16,9 +16,7 @@ class _ActionButtonState extends State<ActionButton> {
       return Material(
         color: AppColor.primaryColor100,
         child: InkWell(
-          onTap: () {
-            //print('called on tap');
-          },
+          onTap: () {},
           child: const SizedBox(
             height: 56,
             width: double.infinity,
@@ -36,14 +34,14 @@ class _ActionButtonState extends State<ActionButton> {
         ),
       );
     }
+
     return Row(
+      mainAxisSize: MainAxisSize.max,
       children: [
         Material(
           color: AppColor.secondaryColor100,
           child: InkWell(
-            onTap: () {
-              //print('called on tap');
-            },
+            onTap: () {},
             child: const SizedBox(
               height: 56,
               width: 165,
@@ -52,9 +50,9 @@ class _ActionButtonState extends State<ActionButton> {
                   'Hủy',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.primaryColor100,
-                    fontSize: 24
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.primaryColor100,
+                      fontSize: 24
                   ),
                 ),
               ),
@@ -62,12 +60,11 @@ class _ActionButtonState extends State<ActionButton> {
           ),
         ),
         Expanded(
+          flex: 1,
           child: Material(
             color: AppColor.primaryColor100,
             child: InkWell(
-              onTap: () {
-                //print('called on tap');
-              },
+              onTap: () {},
               child: const SizedBox(
                 height: 56,
                 width: double.infinity,
@@ -75,9 +72,9 @@ class _ActionButtonState extends State<ActionButton> {
                   child: Text(
                     'Di chuyển',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: AppColor.secondaryColor100,
-                      fontSize: 24
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.secondaryColor100,
+                        fontSize: 24
                     ),
                   ),
                 ),
