@@ -1,4 +1,5 @@
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
+import 'package:co_tam_houseworker_mobile/app/utils/routes.dart';
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
@@ -13,12 +14,17 @@ class Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: radius,
-      backgroundColor: AppColor.primaryColor100,
-      child: Padding(
-        padding: const EdgeInsets.all(4), // Border radius
-        child: ClipOval(child: Image.asset(imgUrl)),
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, Routes.houseworkerInformationPage);
+      },
+      child: CircleAvatar(
+        radius: radius,
+        backgroundColor: AppColor.primaryColor100,
+        child: Padding(
+          padding: const EdgeInsets.all(4), // Border radius
+          child: ClipOval(child: Image.asset(imgUrl)),
+        ),
       ),
     );
   }

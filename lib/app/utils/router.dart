@@ -1,4 +1,5 @@
 import 'package:co_tam_houseworker_mobile/app/pages/home/home_view.dart';
+import 'package:co_tam_houseworker_mobile/app/pages/houseworkerInformation/houseworker_information_page.dart';
 import 'package:co_tam_houseworker_mobile/app/pages/notification/notification_view.dart';
 import 'package:flutter/material.dart';
 import '../pages/login/login_view.dart';
@@ -15,6 +16,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => const OrderPage());
       case 'NotificationPage':
         return MaterialPageRoute(builder: (_) => const NotificationPage());
+      case 'HouseworkerInformationPage':
+        return MaterialPageRoute(builder: (_) => const HouseworkerInformationPage());
       default:
         return MaterialPageRoute(builder: (_) {
           return Scaffold(
