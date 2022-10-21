@@ -20,7 +20,7 @@ class _ActionButtonState extends State<ActionButton> {
             //print('called on tap');
           },
           child: const SizedBox(
-            height: 90,
+            height: 56,
             width: double.infinity,
             child: Center(
               child: Text(
@@ -45,7 +45,7 @@ class _ActionButtonState extends State<ActionButton> {
               //print('called on tap');
             },
             child: const SizedBox(
-              height: 90,
+              height: 56,
               width: 165,
               child: Center(
                 child: Text(
@@ -69,7 +69,7 @@ class _ActionButtonState extends State<ActionButton> {
                 //print('called on tap');
               },
               child: const SizedBox(
-                height: 90,
+                height: 56,
                 width: double.infinity,
                 child: Center(
                   child: Text(

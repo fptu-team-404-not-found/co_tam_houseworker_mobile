@@ -34,7 +34,6 @@ class OrderReceivedPageView
         SizedBox(height: 12),
         OrderDetailsInformationCard(),
         SizedBox(height: 12),
-        OrderDetailsSummary(),
-        ActionButton(numberOfButton: 2)
+        OrderDetailsSummary()
       ]));
 }

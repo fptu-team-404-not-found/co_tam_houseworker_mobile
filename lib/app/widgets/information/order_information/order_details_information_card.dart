@@ -33,6 +33,11 @@ class _OrderDetailsInformationCardState extends State<OrderDetailsInformationCar
           IconTextInformation(null, informationDetails: 'Ủi đồ'),
           IconTextInformation(null, informationDetails: 'Vệ sinh khu vật nuôi'),
           IconTextInformation(FontAwesomeIcons.calendar, informationDetails: 'Ghi chú'),
+          IconTextInformation(FontAwesomeIcons.calendar, informationDetails: 'Ghi chú'),
+          IconTextInformation(FontAwesomeIcons.calendar, informationDetails: 'Ghi chú'),
+          IconTextInformation(FontAwesomeIcons.calendar, informationDetails: 'Ghi chú'),
+          IconTextInformation(FontAwesomeIcons.calendar, informationDetails: 'Ghi chú'),
+          IconTextInformation(FontAwesomeIcons.calendar, informationDetails: 'Ghi chú'),
         ],
       )
     );

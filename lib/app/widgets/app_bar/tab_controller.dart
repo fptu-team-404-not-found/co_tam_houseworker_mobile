@@ -51,41 +51,39 @@ class _TabControllerWidgetState extends State<TabControllerWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: <Widget>[
-        Container(
-          width: double.infinity,
-          height: 48,
-          color: AppColor.secondaryColor100,
-          child: Row(
+    return Scaffold(
+      appBar: PreferredSize(preferredSize: Size.fromHeight(56), child: Container(
+        width: double.infinity,
+        height: 48,
+        color: AppColor.secondaryColor100,
+        child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TabBar(
-                isScrollable: true,
-                tabs: _tabs,
-                controller: tabController,
-                unselectedLabelColor: AppColor.subColor100,
-                labelColor: AppColor.primaryColor100,
-                indicatorWeight: 2,
-                indicatorColor: AppColor.primaryColor30
+                  isScrollable: true,
+                  tabs: _tabs,
+                  controller: tabController,
+                  unselectedLabelColor: AppColor.subColor100,
+                  labelColor: AppColor.primaryColor100,
+                  indicatorWeight: 2,
+                  indicatorColor: AppColor.primaryColor30
               )
             ]
-          )
-        ),
-        SizedBox(
-          width: double.infinity,
-          height: double.maxFinite,
-          child: TabBarView(
-            controller: tabController,
-            children: const [
-              TabBody(bodyView: OrderReceivingPage()),
-              TabBody(bodyView: OrderRatingPage()),
-              TabBody(bodyView: OrderHistoryPage())
-            ],
-          ),
         )
-      ],
+      )),
+      body: SizedBox(
+        width: double.infinity,
+        height: double.maxFinite,
+        child: TabBarView(
+          controller: tabController,
+          children: const [
+            TabBody(bodyView: OrderReceivingPage()),
+            TabBody(bodyView: OrderRatingPage()),
+            TabBody(bodyView: OrderHistoryPage())
+          ],
+        ),
+      )
     );
   }
 }

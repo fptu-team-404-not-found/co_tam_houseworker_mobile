@@ -1,3 +1,4 @@
+import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,8 +23,8 @@ class OrderRatingPageView extends ViewState<OrderRatingPage, OrderController> {
     body: RefreshIndicator(
       key: _refreshIndicatorKey,
       color: Colors.white,
-      backgroundColor: Colors.blue,
-      strokeWidth: 4.0,
+      backgroundColor: AppColor.primaryColor100,
+      strokeWidth: 2.0,
       onRefresh: () async {
         // Replace this delay with the code to be executed during refresh
         // and return a Future when code finishs execution.
