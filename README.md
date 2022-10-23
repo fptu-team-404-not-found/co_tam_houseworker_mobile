@@ -89,7 +89,7 @@
 -| 1.4| [Back-end](https://github.com/fptu-team-404-not-found/co-tam-backend) | Back-end source code
 2| -| Database | Database Information
 -| 2.1| [Database Script](https://github.com/fptu-team-404-not-found/co_tam_houseworker_mobile/blob/main/document/database/CoTamDB.sql) | SQL Scipt
--| 2.2| [Database Entity Relationship Diagram]() | Database ERD
+-| 2.2| [Database Entity Relationship Diagram](https://raw.githubusercontent.com/fptu-team-404-not-found/co_tam_houseworker_mobile/main/document/imgs/ERD-PhysicalERD.png) | Database ERD
 3| -| UI Design | UI design on Figma
 -| 3.1| [Style guide](https://www.figma.com/file/tjpHV6LA8K1vjBITENDw8c/C%C3%B4-T%E1%BA%A5m?node-id=63%3A1057) | Style guide
 -| 3.2| [Customer App](https://www.figma.com/file/tjpHV6LA8K1vjBITENDw8c/C%C3%B4-T%E1%BA%A5m) | Customer Android Mobile Application
