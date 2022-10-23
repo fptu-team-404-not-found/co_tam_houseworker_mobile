@@ -82,12 +82,21 @@
 
 #| #| Name | Description
 -| -| ---- | -----------
-1| -| [Main Project Folder]() | Source code
-2| -| [Database Folder]() | -
--| 2.1| [Database Script]() | SQL Scipt
--| 2.2| [Database ERD Diagram]() | - 
--| 2.3| [Database Diagram]() | -
-3| -| [UI Design]() | UI design on Figma
+1| -| Main Project Folder | Main source code
+-| 1.1| [Front-end](https://github.com/fptu-team-404-not-found/co-tam-frontend) | Front-end source code
+-| 1.2| [Customer Android Mobile App](https://github.com/fptu-team-404-not-found/co_tam_customer_mobile) | Android Mobile for Customer source code
+-| 1.3| [Houseworker Android Mobile App](https://github.com/fptu-team-404-not-found/co_tam_houseworker_mobile) | Android Mobile for Houseworker source code
+-| 1.4| [Back-end](https://github.com/fptu-team-404-not-found/co-tam-backend) | Back-end source code
+2| -| Database | Database Information
+-| 2.1| [Database Script](https://github.com/fptu-team-404-not-found/co_tam_houseworker_mobile/blob/main/document/database/CoTamDB.sql) | SQL Scipt
+-| 2.2| [Database Entity Relationship Diagram]() | Database ERD
+3| -| UI Design | UI design on Figma
+-| 3.1| [Style guide](https://www.figma.com/file/tjpHV6LA8K1vjBITENDw8c/C%C3%B4-T%E1%BA%A5m?node-id=63%3A1057) | Style guide
+-| 3.2| [Customer App](https://www.figma.com/file/tjpHV6LA8K1vjBITENDw8c/C%C3%B4-T%E1%BA%A5m) | Customer Android Mobile Application
+-| 3.3| [Houseworker App](https://www.figma.com/file/tjpHV6LA8K1vjBITENDw8c/C%C3%B4-T%E1%BA%A5m?node-id=159%3A3099) | Houseworker Android Mobile Application
+-| 3.4| [Admin Website](https://www.figma.com/file/tjpHV6LA8K1vjBITENDw8c/C%C3%B4-T%E1%BA%A5m?node-id=125%3A1026) | Admin Website
+-| 3.5| [Manager Website](https://www.figma.com/file/tjpHV6LA8K1vjBITENDw8c/C%C3%B4-T%E1%BA%A5m?node-id=158%3A1380) | Manager Website
+4| -| [Swagger API Document](https://cotam.azurewebsites.net/swagger/index.html) | Swagger API Document
 
 ## Contributors
 **1. Mentors:**
