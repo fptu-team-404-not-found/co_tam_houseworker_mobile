@@ -66,17 +66,35 @@
   - Microsoft SQL Server Management Studio 18
 
 ## Functional requirements
+:point_right: [Check out here for more details](https://github.com/fptu-team-404-not-found/co_tam_houseworker_mobile/tree/main/document/document)
+
 **1. Customer:**
-- [x] 
+- [ ] View personal information
+- [ ] Make an order for cleaning service
+- [ ] Track current cleaning schedule progress.
+- [ ] View the history of used services.
+- [ ] Create a list of Houseworker favorites - blocked.
+- [ ] ...
 
 **2. Houseworker:**
-- [x] 
+- [ ] Management of personal information.
+- [ ] Receive - cancel the schedule.
+- [ ] View their work schedule.
+- [ ] Track current cleaning schedule progress.
+- [ ] View the history of completed/canceled schedules.
+- [ ] ...
 
 **3. Manager:**
-- [x] 
+- [ ] Manage the status of employees.
+- [ ] Manage Customers.
+- [ ] ...
 
 **4. Admin:**
-- [x]
+- [ ] Provide the right to add - remove events - promotions.
+- [ ] Change the listed price of the service.
+- [ ] Temporarily lock - unlock features - services.
+- [ ] Update information about Application - terms - introduction.
+- [ ] ...
 
 ## Useful Resources
 
