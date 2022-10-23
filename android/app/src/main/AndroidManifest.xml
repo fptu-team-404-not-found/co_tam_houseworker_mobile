@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.team404notfound.project">
-   <application
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
         android:label="Cô Tấm - HouseWorker"
         android:name="${applicationName}"
         android:icon="@mipmap/logo">

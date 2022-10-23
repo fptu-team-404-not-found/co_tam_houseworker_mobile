@@ -1,4 +1,3 @@
-import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/button/action_button.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/information/icon_text_information.dart';
 import 'package:flutter/material.dart';
