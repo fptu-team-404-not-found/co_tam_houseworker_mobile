@@ -30,8 +30,8 @@ android {
     ndkVersion flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     defaultConfig {
@@ -43,6 +43,15 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias 'upload'
+            keyPassword 'fptuteam404notfound'
+            storeFile file('upload-keystore.jks')
+            storePassword 'fptuteam404notfound'
+        }
     }
 
     buildTypes {
