@@ -29,14 +29,20 @@ class Data {
   String name;
   String? phone;
   String email;
+  String? avatar;
+  int? managerId;
+  int? areaId;
 
-  Data({required this.name, this.phone, required this.email});
+  Data({required this.name, this.phone, required this.email, this.avatar, this.managerId, this.areaId});
 
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
       name: json['name'],
       phone: json['phone'],
       email: json['email'],
+      avatar: json['avatar'],
+      managerId: json['managerId'],
+      areaId: json['areaId'],
     );
   }
 
@@ -45,6 +51,9 @@ class Data {
       'name': name,
       'phone': phone,
       'email': email,
+      'avatar': avatar,
+      'managerId': managerId,
+      'areaId': areaId,
     };
   }
 }
