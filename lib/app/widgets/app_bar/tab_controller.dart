@@ -78,9 +78,9 @@ class _TabControllerWidgetState extends State<TabControllerWidget>
         child: TabBarView(
           controller: tabController,
           children: const [
-            TabBody(bodyView: OrderReceivingPage()),
-            TabBody(bodyView: OrderRatingPage()),
-            TabBody(bodyView: OrderHistoryPage())
+            TabBody(bodyPage: OrderReceivingPage()),
+            TabBody(bodyPage: OrderRatingPage()),
+            TabBody(bodyPage: OrderHistoryPage())
           ],
         ),
       )

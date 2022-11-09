@@ -1,5 +1,5 @@
 import 'package:co_tam_houseworker_mobile/app/widgets/app_bar/top_app_bar.dart';
-import 'package:co_tam_houseworker_mobile/model/houseworker.dart';
+import 'package:co_tam_houseworker_mobile/model/houseworker/houseworker.dart';
 import 'package:co_tam_houseworker_mobile/repositories/houseworker_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,7 +18,7 @@ class HouseworkerInformationPage extends StatelessWidget {
         preferredSize: Size.fromHeight(56),
         child: TopAppBar('Thông tin cá nhân', FontAwesomeIcons.circleArrowLeft, null, null),
       ),
-      body: FutureBuilder<Houseworker>(
+      /*body: FutureBuilder<Houseworker>(
               future: fetchHouseworkerById(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -90,7 +90,7 @@ class HouseworkerInformationPage extends StatelessWidget {
                 }
                 return const Center(child: Text('Lỗi'));
               }
-          ),
+          ),*/
       );
   }
 }

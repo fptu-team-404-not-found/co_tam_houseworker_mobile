@@ -1,7 +1,7 @@
 
 import 'dart:convert';
 
-import 'package:co_tam_houseworker_mobile/model/houseworker.dart';
+import 'package:co_tam_houseworker_mobile/model/houseworker/houseworker.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/jwt/jwt.dart';
