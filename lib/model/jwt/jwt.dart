@@ -1,6 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:jwt_decode/jwt_decode.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 part 'jwt.g.dart';
 
 @JsonSerializable()

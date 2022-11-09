@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import '../../../utils/constant.dart';
 
 class HouseworkerInformationAvaName extends StatefulWidget {
+  final String avatar, name;
+
   const HouseworkerInformationAvaName({Key? key, required this.avatar, required this.name}) : super(key: key);
-  final avatar, name;
 
   @override
   State<HouseworkerInformationAvaName> createState() => _HouseworkerInformationAvaNameState();

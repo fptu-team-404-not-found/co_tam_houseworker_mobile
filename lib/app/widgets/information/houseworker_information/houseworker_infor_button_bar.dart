@@ -34,9 +34,9 @@ class HouseworkerInforButtonBar extends StatelessWidget {
         ),
         InkWell(
             onTap: () async {
-              GoogleSignIn _googleSignIn = GoogleSignIn();
+              GoogleSignIn googleSignIn = GoogleSignIn();
               try {
-                var result = await _googleSignIn.signOut();
+                await googleSignIn.signOut();
                 final prefs = await SharedPreferences.getInstance();
                 await prefs.remove('accessToken');
                 Navigator.of(context).pushAndRemoveUntil(

@@ -17,7 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool isSignedIn = true;
+  bool isSignedIn = false;
 
   @override
   void initState() {
@@ -32,8 +32,6 @@ class _LoginPageState extends State<LoginPage> {
     if (!mounted) return;
     if (isSignedIn) {
       Navigator.pushReplacementNamed(context, Routes.homePage);
-    } else {
-      isSignedIn = false;
     }
   }
 
@@ -42,13 +40,17 @@ class _LoginPageState extends State<LoginPage> {
     try {
       var result = await googleSignIn.signIn();
       if (result != null) {
-        Token response = await authLogin(result!.email);
-
-        // obtain shared preferences
+        Token token = await authLogin(result.email);
+        if (token.data == null) {
+          googleSignIn.signOut();
+          if (!mounted) return;
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text("You are not allowed to access this application!")));
+        }
         final prefs = await SharedPreferences.getInstance();
         // set value
-        await prefs.setString("accessToken", response!.data!.accessToken.toString());
-        await prefs.setString("googleImageUrl", result!.photoUrl!);
+        await prefs.setString("accessToken", token.data!.accessToken.toString());
+        await prefs.setString("googleImgUrl", result.photoUrl.toString());
         if (!mounted) return;
         Navigator.pushNamed(context, Routes.homePage);
       }
@@ -63,28 +65,29 @@ class _LoginPageState extends State<LoginPage> {
         appBar: const PreferredSize(
             preferredSize: Size(VisualDensity.maximumDensity, 56),
             child: TopAppBar('Cô Tấm', null, null, null)),
-        body: isSignedIn
-            ? Column(
+        body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Center(
-                child: Image(
-                    image: AssetImage('assets/img/login_img.png'),
-                    width: 500)),
+              child: Image(
+                image: AssetImage('assets/img/login_img.png'),
+                width: 500
+              )
+            ),
             const SizedBox(height: 20),
             LoginButton(
-                title: 'Đăng nhập với Google',
-                icon: const FaIcon(FontAwesomeIcons.google),
-                customFunction: googleLogin),
+              title: 'Đăng nhập với Google',
+              icon: const FaIcon(FontAwesomeIcons.google),
+              customFunction: googleLogin
+            ),
             const SizedBox(height: 20),
             const LoginButton(
-                title: 'Đăng nhập với Facebook',
-                icon: FaIcon(FontAwesomeIcons.facebook))
+              title: 'Đăng nhập với Facebook',
+              icon: FaIcon(FontAwesomeIcons.facebook)
+            )
           ],
         )
-            : const Center(
-          child: CircularProgressIndicator(),
-        ));
+    );
   }
 }

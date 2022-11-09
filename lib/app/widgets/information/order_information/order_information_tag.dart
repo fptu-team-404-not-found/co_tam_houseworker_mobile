@@ -24,7 +24,10 @@ class _OrderInformationTagState extends State<OrderInformationTag> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              FaIcon(widget.iconData),
+              FaIcon(
+                widget.iconData,
+                color: AppColor.primaryColor100,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,

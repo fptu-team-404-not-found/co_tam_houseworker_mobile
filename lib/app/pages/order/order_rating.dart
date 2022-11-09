@@ -34,7 +34,7 @@ class OrderRatingPageView extends ViewState<OrderRatingPage, OrderController> {
       child: ListView.builder(
         itemCount: 50,
         itemBuilder: (BuildContext context, int index) {
-          return const OrderInformationTag(iconData: FontAwesomeIcons.addressCard, mainInfo: 'Dọn dẹp vệ sinh nhà cửa', subInfo: '21-10-2022', extraInfo: 'Đánh giá 5 sao');
+          return const OrderInformationTag(iconData: FontAwesomeIcons.faceSmileBeam, mainInfo: 'Dọn dẹp vệ sinh nhà cửa', subInfo: '21-10-2022', extraInfo: 'Đánh giá 5 sao');
         },
       ),
     ),

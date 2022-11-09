@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../manager/manager.dart';
-import '../workerTag/worker_tag.dart';
 part 'houseworker.g.dart';
 
 @JsonSerializable()

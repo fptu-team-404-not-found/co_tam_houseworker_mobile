@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../customerPromotion/customer_promotion.dart';
 part 'customer.g.dart';
 
 @JsonSerializable()

@@ -6,7 +6,6 @@ import 'package:co_tam_houseworker_mobile/app/widgets/app_bar/top_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/routes.dart';
@@ -71,9 +70,8 @@ class HomePageView extends ViewState<HomePage, HomeController> {
             }
           ),*/
 
-        Avatar( radius: 120),
-
-        const SizedBox(height: 32),
+          const Avatar( radius: 120),
+          const SizedBox(height: 32),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [

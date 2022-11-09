@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constant.dart';
 
 class FieldUpdate extends StatefulWidget {
-  const FieldUpdate({Key? key,required this.title, required this.conroller,required this.hintText}) : super(key: key);
+  const FieldUpdate({Key? key,required this.title, required this.conroller, required this.hintText}) : super(key: key);
   final title, hintText;
   final conroller;
 

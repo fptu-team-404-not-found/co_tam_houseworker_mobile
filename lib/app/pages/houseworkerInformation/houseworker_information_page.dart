@@ -15,12 +15,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../model/area/area.dart';
 import '../../utils/constant.dart';
-import '../../utils/routes.dart';
 import '../../widgets/information/houseworker_information/account_info_bar.dart';
-import '../../widgets/information/houseworker_information/houseworker_infor_button_bar.dart';
 import '../login/login_page.dart';
-
-
 
 class HouseworkerInformationPage extends StatefulWidget {
   const HouseworkerInformationPage({Key? key}) : super(key: key);
@@ -42,109 +38,108 @@ class _HouseworkerInformationPageState extends State<HouseworkerInformationPage>
               future: fetchHouseworkerById(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: Column(
-                      children: const [
-                        SizedBox(height: 40),
-                        CircularProgressIndicator(),
-                      ],
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColor.secondaryColor100,
+                      backgroundColor: AppColor.primaryColor100,
+                      strokeWidth: 2.0
                     )
                   );
                 }
                 if (snapshot.hasData) {
-                  return Column(
-                    children: [
-                      HouseworkerInformationAvaName(avatar: snapshot.data!.data!.avatar, name: snapshot.data!.data!.name),
-                      const SizedBox(height: 20,),
-                      const Divider(
-                        height: 8,
-                        thickness: 1,
-                        color: AppColor.subColor30,
-                      ),
-                      AccountInfoBar(textData: snapshot.data!.data!.phone == null ? '' : snapshot.data!.data!.phone.toString(), iconData: Icons.phone,),
-                      const Divider(
-                        height: 8,
-                        thickness: 1,
-                        color: AppColor.subColor30,
-                      ),
-                      AccountInfoBar(textData: snapshot.data!.data!.email == null ? '' : snapshot.data!.data!.email.toString(), iconData: Icons.mail,),
-                      const Divider(
-                        height: 8,
-                        thickness: 1,
-                        color: AppColor.subColor30,
-                      ),
-                      Container(child:
-                        FutureBuilder<Area> (future: fetchAreaById(snapshot.data!.data!.areaId),
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        HouseworkerInformationAvaName(avatar: snapshot.data!.avatar == null ? 'https://danhgiatot.cdn.vccloud.vn/wp-content/uploads/2022/10/meme-meo-cuoi-min.jpg' : snapshot.data!.avatar.toString(), name: snapshot.data!.name.toString()),
+                        const SizedBox(height: 20,),
+                        const Divider(
+                          height: 8,
+                          thickness: 1,
+                          color: AppColor.subColor30,
+                        ),
+                        AccountInfoBar(textData: snapshot.data!.phone == null ? '' : snapshot.data!.phone.toString(), iconData: Icons.phone,),
+                        const Divider(
+                          height: 8,
+                          thickness: 1,
+                          color: AppColor.subColor30,
+                        ),
+                        AccountInfoBar(textData: snapshot.data!.email == null ? '' : snapshot.data!.email.toString(), iconData: Icons.mail,),
+                        const Divider(
+                          height: 8,
+                          thickness: 1,
+                          color: AppColor.subColor30,
+                        ),
+                        FutureBuilder<Area> (future: fetchAreaById(snapshot.data!.areaId!),
                             builder: (context1, snapshot1) {
                               if (snapshot1.connectionState == ConnectionState.waiting) {
-                                return const CircularProgressIndicator();
+                                return const CircularProgressIndicator(
+                                  color: AppColor.secondaryColor100,
+                                  backgroundColor: AppColor.primaryColor100,
+                                  strokeWidth: 2.0,
+                                );
                               }
                               if (snapshot1.hasData) {
-                                return AccountInfoBar(textData: snapshot1.data!.data!.name, iconData: FontAwesomeIcons.building,);
+                                return AccountInfoBar(textData: snapshot1.data!.name!, iconData: FontAwesomeIcons.building,);
                               } else {
-                                return AccountInfoBar(textData: 'hihi', iconData: FontAwesomeIcons.building,);
+                                return const AccountInfoBar(textData: 'hihi', iconData: FontAwesomeIcons.building,);
                               }
                             }
                         ),
-                      ),
-                      const Divider(
-                        height: 8,
-                        thickness: 1,
-                        color: AppColor.subColor30,
-                      ),
-                      const SizedBox(height: 20,),
-                      /*const HouseworkerInforButtonBar(),*/
+                        const Divider(
+                          height: 8,
+                          thickness: 1,
+                          color: AppColor.subColor30,
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            InkWell(
+                                onTap: () {
+                                  navigateSecondPage();
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 30,
+                                  width: 100,
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                                    color: AppColor.primaryColor30,
+                                  ),
+                                  child: const Text('Cập nhật', style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
+                                )
+                            ),
+                            InkWell(
+                                onTap: () async {
+                                  GoogleSignIn googleSignIn = GoogleSignIn();
+                                  try {
+                                    await googleSignIn.signOut();
+                                    final prefs = await SharedPreferences.getInstance();
+                                    await prefs.remove('accessToken');
+                                    Navigator.of(context).pushAndRemoveUntil(
+                                        MaterialPageRoute(builder: (context) => const LoginPage()), (
+                                        route) => false);
+                                  } catch (error) {
+                                    print(error);
+                                  }
+                                },
 
-
-                      //Xin lui ba Tien vi su do hem nay
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          InkWell(
-                              onTap: () {
-                                navigateSecondPage();
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 30,
-                                width: 100,
-                                decoration: const BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                                  color: AppColor.primaryColor30,
-                                ),
-                                child: const Text('Cập nhật', style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
-                              )
-                          ),
-                          InkWell(
-                              onTap: () async {
-                                GoogleSignIn _googleSignIn = GoogleSignIn();
-                                try {
-                                  var result = await _googleSignIn.signOut();
-                                  final prefs = await SharedPreferences.getInstance();
-                                  await prefs.remove('accessToken');
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(builder: (context) => const LoginPage()), (
-                                      route) => false);
-                                } catch (error) {
-                                  print(error);
-                                }
-                              },
-
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 30,
-                                width: 100,
-                                decoration: const BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                                  color: AppColor.primaryColor30,
-                                ),
-                                child: const Text('Đăng xuất', style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
-                              )
-                          ),
-                        ],
-                      )
-                    ],
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 30,
+                                  width: 100,
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                                    color: AppColor.primaryColor30,
+                                  ),
+                                  child: const Text('Đăng xuất', style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
+                                )
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   );
                 }
                 return const Center(child: Text('Lỗi'));
@@ -158,8 +153,8 @@ class _HouseworkerInformationPageState extends State<HouseworkerInformationPage>
   }
 
   void navigateSecondPage() {
-    Route route = MaterialPageRoute(builder: (context) => HouseworkerInformationUpdatePage());
+    Route route = MaterialPageRoute(
+        builder: (context) => const HouseworkerInformationUpdatePage());
     Navigator.push(context, route).then(onGoBack);
   }
 }
-
