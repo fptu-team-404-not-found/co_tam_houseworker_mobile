@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../pages/login/login_page.dart';
 import '../../../utils/constant.dart';
+import '../../../utils/routes.dart';
 
 class HouseworkerInforButtonBar extends StatelessWidget {
   const HouseworkerInforButtonBar({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class HouseworkerInforButtonBar extends StatelessWidget {
       children: [
         InkWell(
             onTap: () {
+              Navigator.pushNamed(context, Routes.houseworkerInformationUpdatePage);
             },
             child: Container(
               alignment: Alignment.center,

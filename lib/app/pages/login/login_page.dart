@@ -48,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
         final prefs = await SharedPreferences.getInstance();
         // set value
         await prefs.setString("accessToken", response!.data!.accessToken.toString());
+        await prefs.setString("googleImageUrl", result!.photoUrl!);
         if (!mounted) return;
         Navigator.pushNamed(context, Routes.homePage);
       }

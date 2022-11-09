@@ -6,6 +6,8 @@ import 'package:co_tam_houseworker_mobile/app/widgets/app_bar/top_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/routes.dart';
 import '../../widgets/information/avatar.dart';
@@ -47,8 +49,31 @@ class HomePageView extends ViewState<HomePage, HomeController> {
           ),
           const Divider(thickness: 3),
           const SizedBox(height: 32),
-          const Avatar(radius: 120),
-          const SizedBox(height: 32),
+
+         /*FutureBuilder<String?>(
+            future: getUrlImage(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                      child: Column(
+                        children: const [
+                          SizedBox(height: 40),
+                          CircularProgressIndicator(),
+                        ],
+                      )
+                  );
+                }
+                if (snapshot.hasData) {
+                  Text(snapshot.data.toString());
+                  Avatar(imgUrl: snapshot.data.toString(), radius: 120);
+                }
+                return const Center(child: Text('Lỗi'));
+            }
+          ),*/
+
+        Avatar( radius: 120),
+
+        const SizedBox(height: 32),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
@@ -74,4 +99,10 @@ class HomePageView extends ViewState<HomePage, HomeController> {
     ),
   );
 
+}
+
+Future<String?> getUrlImage() async {
+  final abc = await SharedPreferences.getInstance();
+  final url = abc.getString('googleImageUrl');
+  return url;
 }
