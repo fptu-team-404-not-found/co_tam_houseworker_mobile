@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../model/houseworker/houseworker.dart';
+import '../../../repositories/auth_repository.dart';
 import '../../../repositories/houseworker_repository.dart';
 import '../../utils/constant.dart';
 import '../../widgets/app_bar/top_app_bar.dart';
 import '../../widgets/information/houseworker_information/field_update.dart';
-
+import '../../widgets/information/houseworker_information/houseworker_infor_ava.dart';
 
 class HouseworkerInformationUpdatePage extends StatefulWidget {
   const HouseworkerInformationUpdatePage({Key? key, this.name, this.phone, this.avatar}) : super(key: key);
@@ -53,19 +54,24 @@ class _UpdateInfoState extends State<HouseworkerInformationUpdatePage> {
                 return Column(
                   children: [
                     const SizedBox(height: 40,),
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 12),
-                      width: 140,
-                      height: 140,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: AppColor.primaryColor100, width: 4),
-                      ),
-                      child: ClipRRect(
-                        borderRadius:
-                        const BorderRadius.all(Radius.circular(80.0)),
-                        child: Image.network(snapshot.data!.avatar == null ? 'https://i.pinimg.com/originals/5f/39/e6/5f39e6d606da1c3d603bdabfccf053f3.jpg' : snapshot.data!.avatar!.toString().toString()),
-                      ),
+                    FutureBuilder<String?>(
+                        future: getUrlImage(),
+                        builder: (context, snapshot2) {
+                          if (snapshot2.connectionState == ConnectionState.waiting) {
+                            return Center(
+                                child: Column(
+                                  children: const [
+                                    SizedBox(height: 40),
+                                    CircularProgressIndicator(),
+                                  ],
+                                )
+                            );
+                          }
+                          if (snapshot2.hasData) {
+                            return HouseworkerInformationAva(avatar: snapshot2.data == null ? 'https://danhgiatot.cdn.vccloud.vn/wp-content/uploads/2022/10/meme-meo-cuoi-min.jpg' : snapshot2.data.toString());
+                          }
+                          return const Center(child: Text('Lỗi'));
+                        }
                     ),
                     FieldUpdate(title: "Họ và tên", conroller: _nameController, hintText: name,),
                     FieldUpdate(title: "Điện thoại", conroller: _phoneNController, hintText: phone,),

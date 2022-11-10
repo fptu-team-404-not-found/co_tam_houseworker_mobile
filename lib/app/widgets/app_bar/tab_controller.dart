@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import '../../pages/order/order_receiving.dart';
 
 class TabControllerWidget extends StatefulWidget {
-  const TabControllerWidget({Key? key}) : super(key: key);
+  final int indexPage;
+
+  const TabControllerWidget({Key? key, required this.indexPage}) : super(key: key);
 
   @override
   _TabControllerWidgetState createState() => _TabControllerWidgetState();
@@ -16,7 +18,7 @@ class TabControllerWidget extends StatefulWidget {
 class _TabControllerWidgetState extends State<TabControllerWidget>
     with SingleTickerProviderStateMixin {
   late final tabController =
-  TabController(length: 3, vsync: this, initialIndex: 0);
+  TabController(length: 3, vsync: this, initialIndex: widget.indexPage);
 
   @override
   void initState() {

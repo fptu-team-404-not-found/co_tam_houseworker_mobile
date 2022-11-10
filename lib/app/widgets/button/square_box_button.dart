@@ -34,7 +34,7 @@ class _SquareBoxButtonState extends State<SquareBoxButton> {
             return AppColor.primaryColor100;
           })),
       onPressed: () {
-        Navigator.pushNamed(context, Routes.orderPage);
+        Navigator.pushNamed(context, Routes.orderPage, arguments: widget.subNumber);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

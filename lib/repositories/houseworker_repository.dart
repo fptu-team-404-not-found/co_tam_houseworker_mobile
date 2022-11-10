@@ -40,6 +40,23 @@ Future updateUserInfo(id, name, phone, context) async {
   }
 }
 
+Future updateUserStatus(id, context) async {
+  var response = await http.delete(
+      Uri.parse("https://cotam.azurewebsites.net/api/houseworkers/$id"),
+      headers : {'Content-Type': 'application/json', 'charset': 'utf-8'},
+      body:
+      jsonEncode({
+      })
+  );
+  if (response.statusCode == 200) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("Your info has been updated")));
+  }else{
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("unsuccessful")));
+  }
+}
+
 Future<String?> getGoogleImage() async{
   final ref = await SharedPreferences.getInstance();
   return ref.getString("googleImgUrl");

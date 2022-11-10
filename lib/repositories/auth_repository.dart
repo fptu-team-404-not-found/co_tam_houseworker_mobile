@@ -28,3 +28,9 @@ Future<JWT> jwtDecode() async {
 
   return jwt;
 }
+
+Future<String?> getUrlImage() async {
+  final abc = await SharedPreferences.getInstance();
+  final url = abc.getString('googleImgUrl');
+  return url;
+}

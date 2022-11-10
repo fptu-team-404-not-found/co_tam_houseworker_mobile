@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../repositories/houseworker_repository.dart';
 import '../../utils/constant.dart';
 
 class SwitchButton extends StatefulWidget {
-  const SwitchButton({Key? key}) : super(key: key);
+  final int? id;
+
+  const SwitchButton({Key? key, this.id = 0}) : super(key: key);
 
   @override
   State<SwitchButton> createState() => _SwitchButtonState();
@@ -20,6 +23,7 @@ class _SwitchButtonState extends State<SwitchButton> {
         onChanged: (value) {
           setState(() {
             isSwitched = value;
+            updateUserStatus(widget.id, context);
           });
         },
         activeTrackColor: AppColor.primaryColor100,

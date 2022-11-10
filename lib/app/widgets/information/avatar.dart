@@ -23,7 +23,16 @@ class Avatar extends StatelessWidget {
         backgroundColor: AppColor.primaryColor100,
         child: Padding(
           padding: const EdgeInsets.all(4), // Border radius
-          child: ClipOval(child: Image.asset(imgUrl)),
+          child: ClipOval(child: Container(
+            padding: EdgeInsets.all(2), // Border width
+            decoration: BoxDecoration(color: AppColor.primaryColor100, shape: BoxShape.circle),
+            child: ClipOval(
+              child: SizedBox.fromSize(
+                size: Size.infinite, // Image radius
+                child: Image.network(imgUrl, fit: BoxFit.cover),
+              ),
+            ),
+          ),),
         ),
       ),
     );

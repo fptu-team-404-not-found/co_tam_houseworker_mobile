@@ -8,6 +8,9 @@ import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../model/houseworker/houseworker.dart';
+import '../../../repositories/auth_repository.dart';
+import '../../../repositories/houseworker_repository.dart';
 import '../../utils/routes.dart';
 import '../../widgets/information/avatar.dart';
 
@@ -27,80 +30,88 @@ class HomePageView extends ViewState<HomePage, HomeController> {
         preferredSize: const Size(VisualDensity.maximumDensity, 56),
         child: TopAppBar("Xin chào", null, FontAwesomeIcons.bell, () => {Navigator.pushNamed(context, Routes.notificationPage)})
     ),
-    body: SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Padding(
-                  padding: EdgeInsets.only(left: 16.0, top: 8),
-                  child: Text(
-                    'Chế độ nhận đơn',
-                    style: AppText.headingSmall,
-                  )
-              ),
-              Padding(
-                  padding: EdgeInsets.only(right: 16.0, top: 8),
-                  child: SwitchButton()
+    body: FutureBuilder<Houseworker>(
+      future: fetchHouseworkerById(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+              child: CircularProgressIndicator(
+                  color: AppColor.secondaryColor100,
+                  backgroundColor: AppColor.primaryColor100,
+                  strokeWidth: 2.0
               )
-            ],
-          ),
-          const Divider(thickness: 3),
-          const SizedBox(height: 32),
-
-         /*FutureBuilder<String?>(
-            future: getUrlImage(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                      child: Column(
-                        children: const [
-                          SizedBox(height: 40),
-                          CircularProgressIndicator(),
-                        ],
+          );
+        }
+        if (snapshot.hasData) {
+          return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Padding(
+                          padding: EdgeInsets.only(left: 16.0, top: 8),
+                          child: Text(
+                            'Chế độ nhận đơn',
+                            style: AppText.headingSmall,
+                          )
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(right: 16.0, top: 8),
+                          child: SwitchButton(id: snapshot.data?.id),
                       )
-                  );
-                }
-                if (snapshot.hasData) {
-                  Text(snapshot.data.toString());
-                  Avatar(imgUrl: snapshot.data.toString(), radius: 120);
-                }
-                return const Center(child: Text('Lỗi'));
-            }
-          ),*/
+                    ],
+                  ),
+                  const Divider(thickness: 3),
+                  const SizedBox(height: 32),
 
-          const Avatar( radius: 120),
-          const SizedBox(height: 32),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              SquareBoxButton(text: 'Đang thực hiện', iconData: FontAwesomeIcons.list, subNumber: 1, isLight: true),
-              SquareBoxButton(text: 'Đã hoàn thành', iconData: FontAwesomeIcons.listCheck, subNumber: 1, isLight: false)
-            ],
-          ),
-          const SizedBox(height: 32),
-          const Divider(color: AppColor.primaryColor100, thickness: 3),
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            children: const [
-              Text('ĐƠN HIỆN TẠI', style: AppText.headingLarge),
-              SizedBox(height: 12),
-              Text('Hiện tại không có đơn nào', style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16
-              ))
-            ],
-          )
-        ],
-      )
-    ),
+                  FutureBuilder<String?>(
+                      future: getUrlImage(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return Center(
+                              child: Column(
+                                children: const [
+                                  SizedBox(height: 40),
+                                  CircularProgressIndicator(),
+                                ],
+                              )
+                          );
+                        }
+                        if (snapshot.hasData) {
+                          return Avatar(imgUrl: snapshot.data.toString(), radius: 120);
+                        }
+                        return const Center(child: Text('Lỗi'));
+                      }
+                  ),
+
+                  const SizedBox(height: 32),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      SquareBoxButton(text: 'Đang thực hiện', iconData: FontAwesomeIcons.list, subNumber: 0, isLight: true),
+                      SquareBoxButton(text: 'Đã hoàn thành', iconData: FontAwesomeIcons.listCheck, subNumber: 2, isLight: false)
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+                  const Divider(color: AppColor.primaryColor100, thickness: 3),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: const [
+                      Text('ĐƠN HIỆN TẠI', style: AppText.headingLarge),
+                      SizedBox(height: 12),
+                      Text('Hiện tại không có đơn nào', style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16
+                      ))
+                    ],
+                  )
+                ],
+              )
+          );
+        }
+        return const Center(child: Text('Lỗi'));
+      }
+    )
   );
-
-}
-
-Future<String?> getUrlImage() async {
-  final abc = await SharedPreferences.getInstance();
-  final url = abc.getString('googleImageUrl');
-  return url;
 }

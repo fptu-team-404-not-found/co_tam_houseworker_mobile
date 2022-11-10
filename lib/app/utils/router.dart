@@ -14,7 +14,8 @@ class Router {
       case 'HomePage':
         return MaterialPageRoute(builder: (_) => const HomePage());
       case 'OrderPage':
-        return MaterialPageRoute(builder: (_) => const OrderPage());
+        final index = settings.arguments as int;
+        return MaterialPageRoute(builder: (_) =>  OrderPage(indexPage: index));
       case 'NotificationPage':
         return MaterialPageRoute(builder: (_) => const NotificationPage());
       case 'HouseworkerInformationPage':

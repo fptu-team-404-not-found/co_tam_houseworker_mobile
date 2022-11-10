@@ -14,6 +14,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../model/area/area.dart';
+import '../../../repositories/auth_repository.dart';
 import '../../utils/constant.dart';
 import '../../widgets/information/houseworker_information/account_info_bar.dart';
 import '../login/login_page.dart';
@@ -50,7 +51,25 @@ class _HouseworkerInformationPageState extends State<HouseworkerInformationPage>
                   return SingleChildScrollView(
                     child: Column(
                       children: [
-                        HouseworkerInformationAvaName(avatar: snapshot.data!.avatar == null ? 'https://danhgiatot.cdn.vccloud.vn/wp-content/uploads/2022/10/meme-meo-cuoi-min.jpg' : snapshot.data!.avatar.toString(), name: snapshot.data!.name.toString()),
+                        FutureBuilder<String?>(
+                            future: getUrlImage(),
+                            builder: (context, snapshot2) {
+                              if (snapshot2.connectionState == ConnectionState.waiting) {
+                                return Center(
+                                    child: Column(
+                                      children: const [
+                                        SizedBox(height: 40),
+                                        CircularProgressIndicator(),
+                                      ],
+                                    )
+                                );
+                              }
+                              if (snapshot2.hasData) {
+                                return HouseworkerInformationAvaName(avatar: snapshot2.data == null ? 'https://danhgiatot.cdn.vccloud.vn/wp-content/uploads/2022/10/meme-meo-cuoi-min.jpg' : snapshot2.data.toString(), name: snapshot.data!.name.toString());
+                              }
+                              return const Center(child: Text('Lỗi'));
+                            }
+                        ),
                         const SizedBox(height: 20,),
                         const Divider(
                           height: 8,
@@ -112,6 +131,9 @@ class _HouseworkerInformationPageState extends State<HouseworkerInformationPage>
                             ),
                             InkWell(
                                 onTap: () async {
+                                  if (snapshot.data?.active == 1) {
+                                    updateUserStatus(snapshot.data?.id, context);
+                                  }
                                   GoogleSignIn googleSignIn = GoogleSignIn();
                                   try {
                                     await googleSignIn.signOut();
@@ -149,6 +171,8 @@ class _HouseworkerInformationPageState extends State<HouseworkerInformationPage>
   }
 
   FutureOr onGoBack(dynamic value) {
+    fetchHouseworkerById();
+    getUrlImage();
     setState(() {});
   }
 
