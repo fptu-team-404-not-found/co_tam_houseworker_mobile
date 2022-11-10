@@ -5,4 +5,5 @@ class Routes {
   static const String notificationPage = 'NotificationPage';
   static const String houseworkerInformationPage = 'HouseworkerInformationPage';
   static const String houseworkerInformationUpdatePage = 'HouseworkerInformationUpdatePage';
+  static const String orderPopupPage = 'OrderPopupPage';
 }
