@@ -1,47 +1,99 @@
 import 'package:co_tam_houseworker_mobile/app/widgets/button/action_button.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/information/icon_text_information.dart';
+import 'package:co_tam_houseworker_mobile/model/workerInOrder/worker_in_order.dart';
+import 'package:co_tam_houseworker_mobile/repositories/customer_repository.dart';
+import 'package:co_tam_houseworker_mobile/repositories/order_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../model/customer/customer.dart';
+import '../../../model/order/order.dart';
+import '../../../repositories/worker_in_order_repository.dart';
+import '../../utils/constant.dart';
 import '../../widgets/information/order_information/order_details_information_card.dart';
 import '../../widgets/information/order_information/order_details_summary.dart';
 import '../../widgets/information/person_information_card.dart';
 import '../../widgets/state/order_status.dart';
-import 'order_controller.dart';
 
-class OrderReceivingPage extends View {
-  const OrderReceivingPage({super.key});
+class OrderReceivingPage extends StatefulWidget {
+  const OrderReceivingPage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => OrderReceivedPageView();
+  State<OrderReceivingPage> createState() => _OrderReceivingPageState();
 }
 
-class OrderReceivedPageView
-    extends ViewState<OrderReceivingPage, OrderController> {
-  OrderReceivedPageView() : super(OrderController());
+class _OrderReceivingPageState extends State<OrderReceivingPage> {
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
+  late Order _order;
+  late Customer _customer;
+  bool loading = true;
+  bool haveOrder = true;
 
   @override
-  Widget get view => Scaffold(
-    body: SingleChildScrollView(
-      child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            SizedBox(height: 12),
-            IconTextInformation(FontAwesomeIcons.locationDot, informationDetails: 'Phòng 2.03, S.201, Vinhomes Grand Park'),
-            SizedBox(height: 12),
-            OrderStatus(),
-            SizedBox(height: 12),
-            PersonInformationCard(),
-            SizedBox(height: 12),
-            OrderDetailsInformationCard(),
-            SizedBox(height: 12),
-            OrderDetailsSummary(),
-            SizedBox(height: 68)
-          ]
-      ),
-    ),
-    floatingActionButton: const ActionButton(numberOfButton: 2),
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-  );
+  void initState() {
+    super.initState();
+    _getOrderById();
+  }
+
+  void _getOrderById() async {
+    WorkerInOrder _workerInOrderOnDoing = await WorkerInOrderRepository().getWorkerInOrderOnDoingByHouseWorkerId();
+    _order = await OrderRepository().getOrderById(_workerInOrderOnDoing.orderId);
+    if (_order != null) {
+      _customer = await CustomerRepository().getCustomerById(_order.house!.customerId);
+      if (_order.orderState == 0 || _order.orderState == 1 || _order.orderState == 7) {
+        haveOrder = false;
+      }
+    }
+    setState(() {
+      loading = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return loading
+        ? (haveOrder == false
+            ? const Center(child: Text('Hiện không có đơn hàng nào!'))
+            : const Center(
+              child: CircularProgressIndicator(
+                color: AppColor.secondaryColor100,
+                backgroundColor: AppColor.primaryColor100,
+                strokeWidth: 2.0,
+              ),
+            )
+        )
+        : Scaffold(
+          body: RefreshIndicator(
+            key: _refreshIndicatorKey,
+            color: AppColor.secondaryColor100,
+            backgroundColor: AppColor.primaryColor100,
+            strokeWidth: 2.0,
+            onRefresh: () async {
+              _getOrderById();
+              return Future<void>.delayed(const Duration(seconds: 20));
+            },
+            child: SingleChildScrollView(
+              child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 12),
+                    IconTextInformation(FontAwesomeIcons.locationDot, informationDetails: 'Phòng ' + _order.house!.number!.trim() + ', ' + _order.house!.building!.name.toString() + ', ' + _order.house!.building!.area!.name.toString()),
+                    const SizedBox(height: 12),
+                    OrderStatus(status: _order.orderState!),
+                    const SizedBox(height: 12),
+                    PersonInformationCard(customer: _customer),
+                    const SizedBox(height: 12),
+                    OrderDetailsInformationCard(order: _order),
+                    const SizedBox(height: 12),
+                    OrderDetailsSummary(order: _order),
+                    const SizedBox(height: 68)
+                  ]
+              )
+            ),
+          ),
+          floatingActionButton: ActionButton(numberOfButton: 1, status: _order.orderState!, orderId: _order.id!),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        );
+  }
 }

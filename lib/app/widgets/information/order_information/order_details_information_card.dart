@@ -3,8 +3,11 @@ import 'package:co_tam_houseworker_mobile/app/widgets/information/icon_text_info
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../model/order/order.dart';
+
 class OrderDetailsInformationCard extends StatefulWidget {
-  const OrderDetailsInformationCard({Key? key}) : super(key: key);
+  final Order order;
+  const OrderDetailsInformationCard({Key? key, required this.order}) : super(key: key);
 
   @override
   State<OrderDetailsInformationCard> createState() => _OrderDetailsInformationCardState();
@@ -27,12 +30,12 @@ class _OrderDetailsInformationCardState extends State<OrderDetailsInformationCar
       ),
       child: Wrap(
         direction: Axis.vertical,
-        children: const [
-          IconTextInformation(FontAwesomeIcons.clock, informationDetails: '1h'),
-          IconTextInformation(FontAwesomeIcons.handHoldingHeart, informationDetails: 'Dọn dẹp nhà cửa'),
-          IconTextInformation(null, informationDetails: 'Ủi đồ'),
-          IconTextInformation(null, informationDetails: 'Vệ sinh khu vật nuôi'),
-          IconTextInformation(FontAwesomeIcons.calendar, informationDetails: 'Ghi chú')
+        children: [
+          IconTextInformation(FontAwesomeIcons.clock, informationDetails: widget.order.package!.name.toString()),
+          IconTextInformation(FontAwesomeIcons.handHoldingHeart, informationDetails: widget.order.package!.service!.name.toString()),
+          //const IconTextInformation(null, informationDetails: 'Ủi đồ'),
+          //IconTextInformation(null, informationDetails: 'Vệ sinh khu vật nuôi'),
+          const IconTextInformation(FontAwesomeIcons.calendar, informationDetails: 'Ghi chú')
         ],
       )
     );

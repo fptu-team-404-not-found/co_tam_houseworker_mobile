@@ -20,6 +20,16 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       json['house'] == null
           ? null
           : House.fromJson(json['house'] as Map<String, dynamic>),
+      json['package'] == null
+          ? null
+          : Package.fromJson(json['package'] as Map<String, dynamic>),
+      json['paymentMethod'] == null
+          ? null
+          : PaymentMethod.fromJson(
+              json['paymentMethod'] as Map<String, dynamic>),
+      json['promotion'] == null
+          ? null
+          : Promotion.fromJson(json['promotion'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
@@ -34,4 +44,7 @@ Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'paymentMethodId': instance.paymentMethodId,
       'orderState': instance.orderState,
       'house': instance.house,
+      'package': instance.package,
+      'paymentMethod': instance.paymentMethod,
+      'promotion': instance.promotion,
     };

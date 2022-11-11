@@ -1,9 +1,14 @@
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
+import 'package:co_tam_houseworker_mobile/repositories/order_repository.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/routes.dart';
 
 class ActionButton extends StatefulWidget {
   final int numberOfButton;
-  const ActionButton({Key? key, required this.numberOfButton}) : super(key: key);
+  final int status;
+  final int orderId;
+  const ActionButton({Key? key, required this.numberOfButton, required this.status, required this.orderId}) : super(key: key);
 
   @override
   State<ActionButton> createState() => _ActionButtonState();
@@ -22,14 +27,23 @@ class _ActionButtonState extends State<ActionButton> {
       return Material(
         color: AppColor.primaryColor100,
         child: InkWell(
-          onTap: () {},
-          child: const SizedBox(
+          onTap: () {
+            OrderRepository().changeOrderStatusByOrderId(widget.orderId);
+            if (widget.status == 4) {
+              OrderRepository().changeOrderStatusByOrderId(widget.orderId);
+              OrderRepository().changeOrderStatusByOrderId(widget.orderId);
+            }
+            Navigator.pushNamed(context, Routes.orderPage);
+          },
+          child: ((widget.status == 0) || (widget.status == 1) || (widget.status == 5) || (widget.status == 6) || (widget.status == 7))
+            ? Visibility(child: Text(''), visible: true)
+            : SizedBox(
             height: 56,
             width: double.infinity,
             child: Center(
               child: Text(
-                'Làm việc',
-                style: TextStyle(
+                widget.status == 2 ? 'Di chuyển' : (widget.status == 3 ? 'Làm việc' : 'Hoàn thành'),
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: AppColor.secondaryColor100,
                     fontSize: 24

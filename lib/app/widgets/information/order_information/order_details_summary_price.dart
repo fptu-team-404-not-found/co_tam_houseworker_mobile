@@ -1,7 +1,9 @@
+import 'package:co_tam_houseworker_mobile/model/order/order.dart';
 import 'package:flutter/material.dart';
 
 class OrderDetailsSummaryPrice extends StatefulWidget {
-  const OrderDetailsSummaryPrice({Key? key}) : super(key: key);
+  final Order order;
+  const OrderDetailsSummaryPrice({Key? key, required this.order}) : super(key: key);
 
   @override
   State<OrderDetailsSummaryPrice> createState() => _OrderDetailsSummaryPriceState();
@@ -12,12 +14,12 @@ class _OrderDetailsSummaryPriceState extends State<OrderDetailsSummaryPrice> {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        Text('Dịch vụ chính', style: TextStyle(
+      children: [
+        const Text('Dịch vụ chính', style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w400
         )),
-        Text('220.000đ', style: TextStyle(
+        Text(widget.order.total.toString(), style: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w400
         ))

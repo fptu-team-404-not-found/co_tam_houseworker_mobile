@@ -51,6 +51,7 @@ class _LoginPageState extends State<LoginPage> {
         // set value
         await prefs.setString("accessToken", token.data!.accessToken.toString());
         await prefs.setString("googleImgUrl", result.photoUrl.toString());
+
         if (!mounted) return;
         Navigator.pushNamed(context, Routes.homePage);
       }

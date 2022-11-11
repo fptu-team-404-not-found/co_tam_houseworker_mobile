@@ -2,6 +2,7 @@ import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:co_tam_houseworker_mobile/model/workerInOrder/worker_in_order.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../repositories/package_repository.dart';
 
 import '../../../repositories/worker_in_order_repository.dart';
 import '../../widgets/information/order_information/order_information_tag.dart';
@@ -26,6 +27,11 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
 
   void _getWorkerInOrders() async {
     _workerInOrders = await WorkerInOrderRepository().getListWorkerInOrderByHouseWorkerId();
+    if (_workerInOrders != null) {
+      for (var wio in _workerInOrders!) {
+        wio.order.package = await PackageRepository().getPackageById(wio.order.packageId);
+      }
+    }
     setState(() {
       loading = false;
     });
@@ -56,9 +62,9 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
               itemBuilder: (BuildContext context, int index) {
                 return OrderInformationTag(
                   iconData: FontAwesomeIcons.fileInvoiceDollar,
-                  mainInfo: _workerInOrders![index].orderId.toString(),
-                  subInfo: '21-10-2022',
-                  extraInfo: '60.000Đ'
+                  mainInfo: _workerInOrders![index].order.package!.service!.name.toString(),
+                  subInfo: _workerInOrders![index].order.dateTime.toString(),
+                  extraInfo: _workerInOrders![index].order.total.toString()
                 );
               }
             )

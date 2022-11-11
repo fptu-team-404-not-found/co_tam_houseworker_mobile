@@ -79,7 +79,7 @@ class _UpdateInfoState extends State<HouseworkerInformationUpdatePage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
-                          height: 50,
+                          height: 30,
                           margin: const EdgeInsets.fromLTRB(0, 20, 25, 0),
                           child: ElevatedButton(
                             onPressed: (){
@@ -93,7 +93,7 @@ class _UpdateInfoState extends State<HouseworkerInformationUpdatePage> {
                             style: ButtonStyle(
                               backgroundColor:
                               MaterialStateProperty.all<Color>(
-                                  AppColor.primaryColor30),
+                                  AppColor.primaryColor50),
                             ),
                             child: const Text('Cập nhật', style: TextStyle(color: Colors.black),),
                           ),
@@ -110,35 +110,3 @@ class _UpdateInfoState extends State<HouseworkerInformationUpdatePage> {
     );
   }
 }
-
-
-
-
-
-/*
-FieldUpdate(title: "Họ và tên", conroller: _nameController,hintText: name.toString(),),
-FieldUpdate(title: "Điện thoại", conroller: _phoneNController,hintText: phone.toString(),),
-Row(
-mainAxisAlignment: MainAxisAlignment.end,
-children: [
-Container(
-height: 50,
-margin: const EdgeInsets.fromLTRB(0, 20, 25, 0),
-child: ElevatedButton(
-onPressed: (){
-setState((){
-updateUserInfo(_nameController.text, _phoneNController.text, context);
-name = _nameController.text;
-phone = _phoneNController.text;
-});
-},
-child: const Text('Cập nhật', style: TextStyle(color: Colors.black),),
-style: ButtonStyle(
-backgroundColor:
-MaterialStateProperty.all<Color>(
-AppColor.primaryColor30),
-),
-),
-),
-],
-),*/

@@ -1,3 +1,4 @@
+import 'package:co_tam_houseworker_mobile/model/houseworker/houseworker.dart';
 import 'package:flutter/material.dart';
 
 import '../../../repositories/houseworker_repository.dart';
@@ -17,18 +18,35 @@ class _SwitchButtonState extends State<SwitchButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Switch(
-        value: isSwitched,
-        onChanged: (value) {
-          setState(() {
-            isSwitched = value;
-            updateUserStatus(widget.id, context);
-          });
-        },
-        activeTrackColor: AppColor.primaryColor100,
-        activeColor: AppColor.primaryColor50,
-      )
+    return FutureBuilder<Houseworker> (future: fetchHouseworkerById(),
+        builder: (context1, snapshot1) {
+          if (snapshot1.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator(
+              color: AppColor.secondaryColor100,
+              backgroundColor: AppColor.primaryColor100,
+              strokeWidth: 2.0,
+            );
+          }
+          if (snapshot1.hasData) {
+            if (snapshot1.data!.active == 1) {
+              isSwitched = true;
+            }
+            return Material(
+                child: Switch(
+                  value: isSwitched,
+                  onChanged: (value) {
+                    setState(() {
+                      isSwitched = value;
+                      updateUserStatus(widget.id, context);
+                    });
+                  },
+                  activeTrackColor: AppColor.primaryColor100,
+                  activeColor: AppColor.primaryColor50,
+                )
+            );
+          }
+           return const Text("Lỗi");
+        }
     );
   }
 }

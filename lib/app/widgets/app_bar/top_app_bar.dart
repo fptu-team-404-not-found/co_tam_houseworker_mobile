@@ -16,7 +16,7 @@ class TopAppBar extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(onPressed: () {
           if (leadingIcon != null) {
-            Navigator.pop(context);
+            Navigator.pop(context, true);
           }
         }, icon: FaIcon(leadingIcon)),
         centerTitle: true,

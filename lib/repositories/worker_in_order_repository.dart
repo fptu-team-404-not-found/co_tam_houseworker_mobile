@@ -36,4 +36,38 @@ class WorkerInOrderRepository {
     }
     return null;
   }
+
+  Future<WorkerInOrder> getPopup() async {
+    //https://cotam.azurewebsites.net/api/work-in-order/wio/120
+    JWT jwt = await jwtDecode();
+    int id = int.parse(jwt.id);
+
+    final response = await
+    http.get(
+        Uri.parse('https://cotam.azurewebsites.net/api/work-in-order/wio/$id'),
+        headers: {
+          HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
+        }
+    );
+    final responseJson = jsonDecode(response.body);
+    ResponseModel responseModel = ResponseModel.fromJson(responseJson);
+    return WorkerInOrder.fromJson(responseModel.data);
+  }
+
+  Future<WorkerInOrder> getWorkerInOrderOnDoingByHouseWorkerId() async {
+    JWT jwt = await jwtDecode();
+    int houseWorkerId = int.parse(jwt.id);
+
+    //https://cotam.azurewebsites.net/api/orders/120
+    final response = await
+    http.get(
+        Uri.parse('https://cotam.azurewebsites.net/api/work-in-order/wio-on-doing/$houseWorkerId'),
+        headers: {
+          HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
+        }
+    );
+    final responseJson = jsonDecode(response.body);
+    ResponseModel responseModel = ResponseModel.fromJson(responseJson);
+    return WorkerInOrder.fromJson(responseModel.data);
+  }
 }

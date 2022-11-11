@@ -1,10 +1,8 @@
 import 'package:co_tam_houseworker_mobile/app/pages/home/home_view.dart';
 import 'package:co_tam_houseworker_mobile/app/pages/houseworkerInformation/houseworker_information_page.dart';
-import 'package:co_tam_houseworker_mobile/app/pages/notification/notification_view.dart';
 import 'package:flutter/material.dart';
 import '../pages/houseworkerInformation/houseworker_information_update_page.dart';
 import '../pages/login/login_page.dart';
-import '../pages/order/order_popup.dart';
 import '../pages/order/order_view.dart';
 
 class Router {
@@ -17,14 +15,10 @@ class Router {
       case 'OrderPage':
         final index = settings.arguments as int;
         return MaterialPageRoute(builder: (_) =>  OrderPage(indexPage: index));
-      case 'NotificationPage':
-        return MaterialPageRoute(builder: (_) => const NotificationPage());
       case 'HouseworkerInformationPage':
         return MaterialPageRoute(builder: (_) => const HouseworkerInformationPage());
       case 'HouseworkerInformationUpdatePage':
         return MaterialPageRoute(builder: (_) => const HouseworkerInformationUpdatePage());
-      case 'OrderPopupPage':
-        return MaterialPageRoute(builder: (_) => const OrderPopupPage());
       default:
         return MaterialPageRoute(builder: (_) {
           return Scaffold(

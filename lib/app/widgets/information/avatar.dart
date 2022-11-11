@@ -8,7 +8,7 @@ class Avatar extends StatelessWidget {
 
   const Avatar(
       {Key? key,
-      this.imgUrl = 'assets/img/default_avatar.jpg',
+      this.imgUrl = 'https://toigingiuvedep.vn/wp-content/uploads/2022/04/meme-meo-cute-anh-meo-khoc.jpg',
       required this.radius})
       : super(key: key);
 
@@ -24,8 +24,8 @@ class Avatar extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(4), // Border radius
           child: ClipOval(child: Container(
-            padding: EdgeInsets.all(2), // Border width
-            decoration: BoxDecoration(color: AppColor.primaryColor100, shape: BoxShape.circle),
+            padding: const EdgeInsets.all(2), // Border width
+            decoration: const BoxDecoration(color: AppColor.primaryColor100, shape: BoxShape.circle),
             child: ClipOval(
               child: SizedBox.fromSize(
                 size: Size.infinite, // Image radius

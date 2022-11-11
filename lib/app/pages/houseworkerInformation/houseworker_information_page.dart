@@ -100,7 +100,7 @@ class _HouseworkerInformationPageState extends State<HouseworkerInformationPage>
                               if (snapshot1.hasData) {
                                 return AccountInfoBar(textData: snapshot1.data!.name!, iconData: FontAwesomeIcons.building,);
                               } else {
-                                return const AccountInfoBar(textData: 'hihi', iconData: FontAwesomeIcons.building,);
+                                return const AccountInfoBar(textData: 'Không thuộc khu vực nào', iconData: FontAwesomeIcons.building,);
                               }
                             }
                         ),

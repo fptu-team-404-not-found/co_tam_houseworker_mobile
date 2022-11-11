@@ -20,11 +20,14 @@ class _IconTextInformationState extends State<IconTextInformation> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(padding: const EdgeInsets.all(8), child: FaIcon(widget.icon, color: AppColor.primaryColor100, size: 20)),
-        Text(widget.informationDetails, style: const TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-          fontStyle: FontStyle.normal,
-          color: AppColor.subColor100)
+        Text(
+          widget.informationDetails,
+          style: const TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            fontStyle: FontStyle.normal,
+            color: AppColor.subColor100
+          )
         )
       ],
     );

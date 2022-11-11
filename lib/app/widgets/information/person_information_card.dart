@@ -1,10 +1,12 @@
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/information/avatar.dart';
+import 'package:co_tam_houseworker_mobile/model/customer/customer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PersonInformationCard extends StatefulWidget {
-  const PersonInformationCard({Key? key}) : super(key: key);
+  final Customer? customer;
+  const PersonInformationCard({Key? key, this.customer}) : super(key: key);
 
   @override
   State<PersonInformationCard> createState() => _PersonInformationCardState();
@@ -29,29 +31,40 @@ class _PersonInformationCardState extends State<PersonInformationCard> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const Avatar(radius: 48),
+          CircleAvatar(
+            radius: 48,
+            backgroundColor: AppColor.primaryColor100,
+            child: Padding(
+              padding: const EdgeInsets.all(0.5), // Border radius
+              child: ClipOval(child: Container(
+                padding: const EdgeInsets.all(2), // Border width
+                decoration: const BoxDecoration(color: AppColor.primaryColor100, shape: BoxShape.circle),
+                child: ClipOval(
+                  child: SizedBox.fromSize(
+                    size: Size.infinite, // Image radius
+                    child: Image.network(widget.customer!.avatar.toString(), fit: BoxFit.cover),
+                  ),
+                ),
+              ),),
+            ),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Padding(padding: EdgeInsets.all(8), child: Text('Họ và tên', style: TextStyle(
+            children: [
+              Padding(padding: const EdgeInsets.all(4), child: Text(widget.customer!.name.toString(), style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
                 color: AppColor.primaryColor100
               ))),
-              Padding(padding: EdgeInsets.all(8), child: Text('SĐT', style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: AppColor.subColor100
-              ))),
-              Padding(padding: EdgeInsets.all(8), child: Text('Lưu ý', style: TextStyle(
+              Padding(padding: const EdgeInsets.all(4), child: Text(widget.customer!.phone!.toString(), style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: AppColor.subColor100
               ))),
             ],
           ),
-          const FaIcon(FontAwesomeIcons.phone, color: AppColor.primaryColor100)
+          //const FaIcon(FontAwesomeIcons.phone, color: AppColor.primaryColor100)
         ],
       )
     );
