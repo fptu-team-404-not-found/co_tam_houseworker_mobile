@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:co_tam_houseworker_mobile/app/pages/order/order_popup.dart';
 import 'package:co_tam_houseworker_mobile/app/utils/constant.dart';
 import 'package:co_tam_houseworker_mobile/app/widgets/button/square_box_button.dart';
@@ -23,11 +25,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late WorkerInOrder _workerInOrder;
   bool isPopup = false;
+  Timer? timer;
 
   @override
   void initState() {
     super.initState();
-    _getPopup();
+    timer = Timer.periodic(Duration(seconds: 5), (Timer t) {
+      _getPopup();
+    });
   }
 
   void _getPopup() async {

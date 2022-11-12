@@ -37,13 +37,13 @@ class _OrderReceivingPageState extends State<OrderReceivingPage> {
   }
 
   void _getOrderById() async {
-    WorkerInOrder _workerInOrderOnDoing = await WorkerInOrderRepository().getWorkerInOrderOnDoingByHouseWorkerId();
-    _order = await OrderRepository().getOrderById(_workerInOrderOnDoing.orderId);
+    WorkerInOrder? workerInOrderOnDoing = await WorkerInOrderRepository().getWorkerInOrderOnDoingByHouseWorkerId();
+    if (workerInOrderOnDoing.order.id == null) {
+      haveOrder = false;
+    }
+    _order = await OrderRepository().getOrderById(workerInOrderOnDoing.orderId);
     if (_order != null) {
       _customer = await CustomerRepository().getCustomerById(_order.house!.customerId);
-      if (_order.orderState == 0 || _order.orderState == 1 || _order.orderState == 7) {
-        haveOrder = false;
-      }
     }
     setState(() {
       loading = false;
