@@ -62,11 +62,13 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                   _getWorkerInOrders();
                   return Future<void>.delayed(const Duration(seconds: 3));
                 },
-                child: ListView.builder(
+                child: _workerInOrders == null
+                    ? Center(child: Text('Không có đơn hàng nào'))
+                    : ListView.builder(
                     itemCount: _workerInOrders!.length,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
-                          /*onTap: () async {
+                        /*onTap: () async {
                              int orderId = _workerInOrders![index].orderId;
                              Navigator.pushNamed(context, Routes.orderDetailsPage, arguments: orderId);
                           },*/
@@ -82,7 +84,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                             _workerInOrders![index].order.dateTime.toString(),
                             extraInfo:
                             _workerInOrders![index].order.total.toString()),
-                        );
+                      );
                     })),
           );
   }

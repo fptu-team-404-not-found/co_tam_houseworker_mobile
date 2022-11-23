@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                             }
                         ),
 
-                        const SizedBox(height: 32),
+                        const SizedBox(height: 64),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
@@ -114,18 +114,12 @@ class _HomePageState extends State<HomePage> {
                             SquareBoxButton(text: 'Đã hoàn thành', iconData: FontAwesomeIcons.listCheck, subNumber: 2, isLight: false)
                           ],
                         ),
-                        const SizedBox(height: 32),
-                        const Divider(color: AppColor.primaryColor100, thickness: 3),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: const [
-                            Text('ĐƠN HIỆN TẠI', style: AppText.headingLarge),
-                            SizedBox(height: 12),
-                            Text('Hiện tại không có đơn nào', style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16
-                            ))
-                          ],
+                        const SizedBox(height: 88),
+                        const Divider(color: AppColor.primaryColor100, thickness: 3, indent: 24, endIndent: 24,),
+                        const Center(
+                          child: Text('Dọn nhà khó, có cô Tấm lo', style: TextStyle(
+                            fontSize: 16
+                          ),),
                         )
                       ],
                     )

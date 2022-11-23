@@ -28,7 +28,7 @@ class _OrderReceivingPageState extends State<OrderReceivingPage> {
   late Order _order;
   late Customer _customer;
   bool loading = true;
-  bool haveOrder = true;
+  bool haveOrder = false;
 
   @override
   void initState() {
@@ -38,8 +38,8 @@ class _OrderReceivingPageState extends State<OrderReceivingPage> {
 
   void _getOrderById() async {
     WorkerInOrder? workerInOrderOnDoing = await WorkerInOrderRepository().getWorkerInOrderOnDoingByHouseWorkerId();
-    if (workerInOrderOnDoing.order.id == null) {
-      haveOrder = false;
+    if (workerInOrderOnDoing.order.id != null) {
+      haveOrder = true;
     }
     _order = await OrderRepository().getOrderById(workerInOrderOnDoing.orderId);
     if (_order != null) {
@@ -53,7 +53,7 @@ class _OrderReceivingPageState extends State<OrderReceivingPage> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? (haveOrder == false
+        ? (WorkerInOrderRepository().getWorkerInOrderOnDoingByHouseWorkerId() != null
             ? const Center(child: Text('Hiện không có đơn hàng nào!'))
             : const Center(
               child: CircularProgressIndicator(

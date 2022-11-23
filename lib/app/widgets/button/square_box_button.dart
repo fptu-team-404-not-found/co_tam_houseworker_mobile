@@ -26,7 +26,7 @@ class _SquareBoxButtonState extends State<SquareBoxButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-          fixedSize: MaterialStateProperty.all(const Size.square(180)),
+          fixedSize: MaterialStateProperty.all(const Size.square(160)),
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             if (widget.isLight) {
               return AppColor.secondaryColor100;

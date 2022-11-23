@@ -42,12 +42,12 @@ class _OrderRatingPageState extends State<OrderRatingPage> {
   Widget build(BuildContext context) {
     return loading
         ? const Center(
-      child: CircularProgressIndicator(
-        color: AppColor.secondaryColor100,
-        backgroundColor: AppColor.primaryColor100,
-        strokeWidth: 2.0,
-      ),
-    )
+          child: CircularProgressIndicator(
+            color: AppColor.secondaryColor100,
+            backgroundColor: AppColor.primaryColor100,
+            strokeWidth: 2.0,
+          ),
+        )
         : Scaffold(
       body: RefreshIndicator(
           key: _refreshIndicatorKey,
@@ -58,7 +58,9 @@ class _OrderRatingPageState extends State<OrderRatingPage> {
             _getWorkerInOrders();
             return Future<void>.delayed(const Duration(seconds: 3));
           },
-          child: ListView.builder(
+          child: _workerInOrders == null
+              ? Center(child: Text('Không có đơn hàng nào'))
+              : ListView.builder(
               itemCount: _workerInOrders!.length,
               itemBuilder: (BuildContext context, int index) {
                 return OrderInformationTag(

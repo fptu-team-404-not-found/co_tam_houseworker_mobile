@@ -31,7 +31,6 @@ class _ActionButtonState extends State<ActionButton> {
             OrderRepository().changeOrderStatusByOrderId(widget.orderId);
             if (widget.status == 4) {
               OrderRepository().changeOrderStatusByOrderId(widget.orderId);
-              OrderRepository().changeOrderStatusByOrderId(widget.orderId);
             }
             Navigator.pushNamed(context, Routes.orderPage);
           },
